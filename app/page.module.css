@@ -38,7 +38,7 @@
   overflow: hidden;
 }
 
-/* Case Studies Section *\/
+/* Case Studies Section */
 .caseStudiesSection {
   padding: 5rem 4rem;
 }
@@ -86,7 +86,7 @@
 }
 
 .caseCard:hover .imgWrap img {
-  transform: scale(1.05); /* parallax effect zoom *\/
+  transform: scale(1.05); /* parallax effect zoom */
 }
 
 .line {
@@ -109,7 +109,7 @@
   font-weight: 400;
 }
 
-/* About Section *\/
+/* About Section */
 .aboutSection {
   padding: 10rem 4rem;
   background-color: var(--foreground);

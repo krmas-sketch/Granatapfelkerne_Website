@@ -2,7 +2,7 @@
   --background: #f0f0f0;
   --foreground: #1a1a1a;
   --grey: #8c8c8c;
-  --accent: #d32f2f; /* Pomegranate red *\/
+  --accent: #d32f2f; /* Pomegranate red */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -31,7 +31,7 @@ a {
   box-sizing: border-box;
 }
 
-/* Custom Selection *\/
+/* Custom Selection */
 ::selection {
   background-color: var(--accent);
   color: white;

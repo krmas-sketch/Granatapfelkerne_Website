@@ -4,7 +4,7 @@
   padding: 5rem 4rem 2rem 4rem;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  margin-top: -40px; /* pull up over the previous section slightly if wanted *\/
+  margin-top: -40px; /* pull up over the previous section slightly if wanted */
   position: relative;
   z-index: 10;
 }
