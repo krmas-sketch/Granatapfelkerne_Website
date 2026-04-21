@@ -1,0 +1,163 @@
+.main {
+  width: 100%;
+}
+
+.heroSection {
+  padding: 15rem 4rem 10rem 4rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.heroHeading {
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.lineWrap {
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.word {
+  display: inline-block;
+}
+
+.heroSubheading {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 400;
+  margin-top: 3rem;
+  color: var(--grey);
+}
+
+.subWrap {
+  overflow: hidden;
+}
+
+/* Case Studies Section *\/
+.caseStudiesSection {
+  padding: 5rem 4rem;
+}
+
+.caseHeader h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 3rem;
+}
+
+.studiesGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.caseCard {
+  display: block;
+}
+
+.caseInner {
+  display: flex;
+  flex-direction: column;
+}
+
+.numWrap {
+  font-size: 0.8rem;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.imgWrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.imgWrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.caseCard:hover .imgWrap img {
+  transform: scale(1.05); /* parallax effect zoom *\/
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 1.5rem 0;
+}
+
+.caseInfo {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.caseInner h3 {
+  font-size: 2rem;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* About Section *\/
+.aboutSection {
+  padding: 10rem 4rem;
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.aboutGrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 4rem;
+}
+
+.aboutGrid h2 {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.aboutGrid h3 {
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  line-height: 1.2;
+  font-weight: 500;
+  max-width: 800px;
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.aboutContent {
+  grid-column: 2;
+  max-width: 600px;
+}
+
+.aboutContent p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.8;
+  margin-bottom: 3rem;
+}
+
+.btnContainer {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 1px solid var(--background);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btnContainer:hover {
+  background-color: var(--background);
+  color: var(--foreground);
+}

@@ -1,0 +1,116 @@
+.footer {
+  background-color: var(--foreground);
+  color: var(--background);
+  padding: 5rem 4rem 2rem 4rem;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  margin-top: -40px; /* pull up over the previous section slightly if wanted *\/
+  position: relative;
+  z-index: 10;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.menuLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menuLinks li a {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.menuLinks li a:hover {
+  opacity: 1;
+}
+
+.middle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contactHeading {
+  font-size: clamp(1.5rem, 2vw, 2.5rem);
+  line-height: 1.2;
+  font-weight: 400;
+  margin: 0 0 2rem 0;
+}
+
+.btnContainer {
+  display: inline-block;
+  padding: 1rem 2rem;
+  border: 1px solid var(--background);
+  border-radius: 999px;
+  transition: all 0.3s ease;
+}
+
+.btnContainer:hover {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.greyHeading {
+  color: var(--grey);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.listWrap ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listWrap li {
+  margin-bottom: 0.5rem;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  font-size: 0.8rem;
+  color: var(--grey);
+}
+
+.metaLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.metaLinks a:hover {
+  color: var(--background);
+}
