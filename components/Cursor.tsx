@@ -58,8 +58,8 @@ export default function Cursor() {
         color: 'white',
         fontSize: '4px', // scales with Framer motion
         textAlign: 'center',
-        opacity: 0.8,
-        transition: 'background-color 0.3s'
+        opacity: hoverText ? 0.8 : 0,
+        transition: 'background-color 0.3s, opacity 0.3s'
       }}>
         {hoverText && <span style={{ transform: 'scale(0.33)' }}>{hoverText}</span>}
       </div>

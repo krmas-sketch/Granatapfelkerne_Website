@@ -30,6 +30,8 @@
   letter-spacing: 0.05em;
   position: relative;
   overflow: hidden;
+  display: inline-block;
+  padding-bottom: 2px;
 }
 
 .menuLinks li a::after {
