@@ -51,7 +51,7 @@ export default function Home() {
           <h2>Unsere Produkte.</h2>
         </header>
         <div className={styles.studiesGrid}>
-          {/* Card 1 */
+          {/* Card 1 */}
           <a href="/produkte" className={styles.caseCard} data-hover="Ansehen">
             <div className={styles.caseInner}>
               <div className={styles.numWrap}>
@@ -68,7 +68,7 @@ export default function Home() {
             </div>
           </a>
 
-          {/* Card 2 */
+          {/* Card 2 */}
           <a href="/produkte" className={styles.caseCard} data-hover="Entdecken">
             <div className={styles.caseInner}>
               <div className={styles.numWrap}>
