@@ -161,3 +161,13 @@
   background-color: var(--background);
   color: var(--foreground);
 }
+
+@media (max-width: 768px) {
+  .heroSection { padding: 8rem 2rem 4rem 2rem; }
+  .heroHeading { font-size: clamp(2.5rem, 10vw, 4rem); }
+  .caseStudiesSection { padding: 3rem 2rem; }
+  .studiesGrid { grid-template-columns: 1fr; }
+  .aboutSection { padding: 5rem 2rem; }
+  .aboutGrid { grid-template-columns: 1fr; gap: 2rem; }
+  .aboutContent { grid-column: 1; }
+}
