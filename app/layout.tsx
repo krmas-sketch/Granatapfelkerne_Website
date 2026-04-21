@@ -26,7 +26,6 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <SmoothScroll>
-          <Cursor />
           <Header />
           {children}
           <Footer />
