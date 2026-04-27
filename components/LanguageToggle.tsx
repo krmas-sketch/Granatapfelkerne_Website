@@ -16,7 +16,7 @@ export default function LanguageToggle({ currentLang }: { currentLang: string })
   };
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginLeft: '1rem', fontSize: '0.8rem', textTransform: 'uppercase' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.8rem', textTransform: 'uppercase' }}>
       <Link 
         href={getSwitchUrl('de')}
         style={{ 

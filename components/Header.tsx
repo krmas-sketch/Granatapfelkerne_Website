@@ -26,11 +26,11 @@ export default async function Header({ lang }: { lang: string }) {
               <Link href={`/${lang}${link.href === '/' ? '' : link.href}`}>{link.title}</Link>
             </li>
           ))}
+          <li style={{ display: 'flex', alignItems: 'center' }}>
+            <LanguageToggle currentLang={lang} />
+          </li>
         </ul>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <LanguageToggle currentLang={lang} />
-          <ThemeToggle />
-        </div>
+        <ThemeToggle />
       </nav>
     </header>
   );
