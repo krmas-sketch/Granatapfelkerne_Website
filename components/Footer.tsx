@@ -1,42 +1,48 @@
 import Link from 'next/link';
 import styles from './Footer.module.css';
+import { getMarkdownContent } from '../lib/markdown';
 
-export default function Footer() {
+export default async function Footer({ lang }: { lang: string }) {
+  const navData = await getMarkdownContent(['global', 'navigation'], lang);
+  const links = navData?.links || [];
+  
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.logoWrap}>
-            <Link href="/" className={styles.logo}>Granatapfelkerne®</Link>
+            <Link href={`/${lang}`} className={styles.logo}>Granatapfelkerne®</Link>
           </div>
           <ul className={styles.menuLinks}>
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/produkte">Produkte</Link></li>
-            <li><Link href="/vorteile">Vorteile</Link></li>
-            <li><Link href="/ueber-uns">Über Uns</Link></li>
-            <li><Link href="/kontakt">Kontakt</Link></li>
+            {links.map((link: any, idx: number) => (
+              <li key={idx}>
+                <Link href={`/${lang}${link.href === '/' ? '' : link.href}`}>{link.title}</Link>
+              </li>
+            ))}
           </ul>
         </div>
         
         <div className={styles.middle}>
           <div className={styles.contact}>
-            <h3 className={styles.contactHeading}>Wir freuen uns auf Ihre Anfrage. Lassen Sie uns zusammenarbeiten.</h3>
-            <a href="/kontakt" className={styles.btnContainer} data-hover="Kontakt">
-              <span className={styles.btnText}>Anfrage senden</span>
-            </a>
+            <h3 className={styles.contactHeading}>
+              {lang === 'de' ? 'Wir freuen uns auf Ihre Anfrage. Lassen Sie uns zusammenarbeiten.' : "We look forward to your inquiry. Let's work together."}
+            </h3>
+            <Link href={`/${lang}/kontakt`} className={styles.btnContainer}>
+              <span className={styles.btnText}>{lang === 'de' ? 'Anfrage senden' : 'Send inquiry'}</span>
+            </Link>
           </div>
 
           <div className={styles.details}>
             <div className={styles.listWrap}>
-              <h4 className={styles.greyHeading}>Geschäftsanfragen</h4>
+              <h4 className={styles.greyHeading}>{lang === 'de' ? 'Geschäftsanfragen' : 'Business Inquiries'}</h4>
               <ul>
-                <li><a href="mailto:hallo@granatapfelkerne.de">hallo@granatapfelkerne.de</a></li>
-                <li><a href="tel:+49123456789">+49 123 456789</a></li>
+                <li><a href={`mailto:${navData?.email}`}>{navData?.email}</a></li>
+                <li><a href={`tel:${navData?.phone?.replace(/\s/g, '')}`}>{navData?.phone}</a></li>
               </ul>
             </div>
             <div className={styles.listWrap}>
-              <h4 className={styles.greyHeading}>Standort</h4>
-              <p>Musterstraße 1<br/>20095 Hamburg<br/>Deutschland</p>
+              <h4 className={styles.greyHeading}>{lang === 'de' ? 'Standort' : 'Location'}</h4>
+              <p>{navData?.address?.split(', ').map((line: string, i: number) => <span key={i}>{line}<br/></span>)}</p>
             </div>
           </div>
         </div>

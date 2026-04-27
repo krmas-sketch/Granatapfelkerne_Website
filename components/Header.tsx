@@ -1,19 +1,23 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
+import { getMarkdownContent } from '../lib/markdown';
 
-export default function Header() {
+export default async function Header({ lang }: { lang: string }) {
+  const navData = await getMarkdownContent(['global', 'navigation'], lang);
+  const links = navData?.links || [];
+
   return (
     <header className={styles.header}>
       <div className={styles.logoWrap}>
-        <Link href="/" className={styles.logo}>Granatapfelkerne®</Link>
+        <Link href={`/${lang}`} className={styles.logo}>Granatapfelkerne®</Link>
       </div>
       <nav className={styles.nav}>
         <ul className={styles.menuLinks}>
-          <li><Link href="/">Home</Link></li>
-          <li><Link href="/produkte">Produkte</Link></li>
-          <li><Link href="/vorteile">Vorteile</Link></li>
-          <li><Link href="/ueber-uns">Über Uns</Link></li>
-          <li><Link href="/kontakt">Kontakt</Link></li>
+          {links.map((link: any, idx: number) => (
+            <li key={idx}>
+              <Link href={`/${lang}${link.href === '/' ? '' : link.href}`}>{link.title}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>
