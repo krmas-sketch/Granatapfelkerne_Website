@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import styles from './Header.module.css';
 import { getMarkdownContent } from '../lib/markdown';
+import ThemeToggle from './ThemeToggle';
 
 export default async function Header({ lang }: { lang: string }) {
   const navData = await getMarkdownContent(['global', 'navigation'], lang);
@@ -25,6 +26,7 @@ export default async function Header({ lang }: { lang: string }) {
             </li>
           ))}
         </ul>
+        <ThemeToggle />
       </nav>
     </header>
   );

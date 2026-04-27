@@ -5,13 +5,11 @@
   --accent: #d32f2f; /* Pomegranate red */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111111;
-    --foreground: #fcfcfc;
-    --grey: #8c8c8c;
-    --accent: #ff4c4c;
-  }
+[data-theme='dark'] {
+  --background: #111111;
+  --foreground: #fcfcfc;
+  --grey: #8c8c8c;
+  --accent: #ff4c4c;
 }
 
 body {

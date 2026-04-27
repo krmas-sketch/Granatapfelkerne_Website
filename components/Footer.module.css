@@ -1,6 +1,4 @@
 .footer {
-  background-color: var(--foreground);
-  color: var(--background);
   padding: 5rem 4rem 2rem 4rem;
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
@@ -63,14 +61,14 @@
 .btnContainer {
   display: inline-block;
   padding: 1rem 2rem;
-  border: 1px solid var(--background);
+  border: 1px solid var(--foreground);
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
 .btnContainer:hover {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
 .details {
@@ -100,7 +98,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--grey);
   padding-top: 2rem;
   font-size: 0.8rem;
   color: var(--grey);
@@ -112,7 +110,7 @@
 }
 
 .metaLinks a:hover {
-  color: var(--background);
+  color: var(--foreground);
 }
 
 @media (max-width: 768px) {

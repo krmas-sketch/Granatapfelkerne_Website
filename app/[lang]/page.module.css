@@ -112,8 +112,6 @@
 /* About Section */
 .aboutSection {
   padding: 10rem 4rem;
-  background-color: var(--foreground);
-  color: var(--background);
 }
 
 .aboutGrid {
@@ -152,14 +150,14 @@
 .btnContainer {
   display: inline-block;
   padding: 1rem 2rem;
-  border: 1px solid var(--background);
+  border: 1px solid var(--foreground);
   border-radius: 999px;
   transition: all 0.3s ease;
 }
 
 .btnContainer:hover {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
 @media (max-width: 768px) {

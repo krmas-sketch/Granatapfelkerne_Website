@@ -5,6 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import SmoothScroll from '../../components/SmoothScroll';
 import JsonLd from '../../components/SEO/JsonLd';
+import { ThemeProvider } from '../../components/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -26,11 +27,13 @@ export default function RootLayout({
         <JsonLd />
       </head>
       <body className={inter.className}>
-        <SmoothScroll>
-          <Header lang={params.lang} />
-          {children}
-          <Footer lang={params.lang} />
-        </SmoothScroll>
+        <ThemeProvider attribute="data-theme" defaultTheme="light">
+          <SmoothScroll>
+            <Header lang={params.lang} />
+            {children}
+            <Footer lang={params.lang} />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );
