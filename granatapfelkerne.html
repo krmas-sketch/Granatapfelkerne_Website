@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Granatapfelkerne.de – Premium Arils für die Lebensmittelindustrie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --ink:    #111111;
+  --red:    #8B0000;
+  --white:  #F7F6F3;
+  --paper:  #EEECEA;
+  --rule:   #D8D5CE;
+  --mid:    #888880;
+  --light:  #C8C5BE;
+  --f-display: 'Barlow Condensed', sans-serif;
+  --f-body:    'DM Sans', sans-serif;
+  --f-data:    'DM Mono', monospace;
+}
+html { scroll-behavior: smooth; background: var(--white); }
+body { font-family: var(--f-body); color: var(--ink); background: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--ink); color: var(--white); }
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--light); }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--white);
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 0 48px;
+  height: 52px;
+}
+.nav-wordmark {
+  font-family: var(--f-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.nav-wordmark em { font-style: normal; color: var(--red); }
+.nav-center {
+  display: flex; align-items: center; gap: 0;
+}
+.nav-link {
+  font-family: var(--f-body);
+  font-size: 12px;
+  color: var(--mid);
+  text-decoration: none;
+  padding: 0 20px;
+  height: 52px;
+  display: flex; align-items: center;
+  border-left: 1px solid var(--rule);
+  transition: color 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.nav-link:last-child { border-right: 1px solid var(--rule); }
+.nav-link:hover, .nav-link.active { color: var(--ink); }
+.nav-right { display: flex; justify-content: flex-end; }
+.nav-cta {
+  font-family: var(--f-body);
+  font-size: 12px;
+  font-weight: 500;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 10px 22px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: var(--red); }
+
+/* ── SECTIONS ── */
+section { min-height: 100vh; }
+
+/* ── CHAIN SCROLL ── */
+.chain-track { display: flex; overflow-x: auto; }
+.chain-track::-webkit-scrollbar { height: 1px; }
+.chain-track::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* ── FORM INPUTS ── */
+input, textarea, select {
+  font-family: var(--f-body);
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--white);
+  border: 1px solid var(--rule);
+  outline: none;
+  width: 100%;
+  padding: 11px 14px;
+  transition: border-color 0.15s;
+  -webkit-appearance: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--ink); }
+textarea { resize: none; }
+
+/* ── TWEAKS ── */
+.tweaks-panel {
+  display: none;
+  position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+  background: var(--ink); color: var(--white);
+  padding: 24px; width: 240px;
+  font-family: var(--f-data); font-size: 11px;
+  border-top: 2px solid var(--red);
+}
+.tweaks-panel.open { display: block; }
+.tweaks-panel .tw-title { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); margin-bottom: 18px; }
+.tweaks-panel label { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; color: #888; font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; }
+.tweaks-panel select { background: #1E1E1E; color: var(--white); border-color: #333; font-family: var(--f-data); font-size: 11px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<template id="__bundler_thumbnail">
+<svg viewBox="0 0 80 56" xmlns="http://www.w3.org/2000/svg">
+  <rect width="80" height="56" fill="#F7F6F3"/>
+  <rect x="0" y="12" width="80" height="1" fill="#D8D5CE"/>
+  <rect x="8" y="20" width="40" height="8" fill="#111" opacity="0.8"/>
+  <rect x="8" y="32" width="24" height="2" fill="#D8D5CE"/>
+  <rect x="8" y="36" width="18" height="2" fill="#D8D5CE"/>
+  <rect x="56" y="20" width="16" height="20" fill="#8B0000" opacity="0.15"/>
+  <rect x="58" y="24" width="12" height="1" fill="#8B0000"/>
+  <rect x="58" y="28" width="10" height="1" fill="#8B0000" opacity="0.5"/>
+  <rect x="0" y="50" width="80" height="1" fill="#D8D5CE"/>
+</svg>
+</template>
+
+<script type="text/babel">
+const { useState, useEffect, useRef } = React;
+
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor": "#8B0000",
+  "density": "normal",
+  "heroImageSide": "right"
+}/*EDITMODE-END*/;
+
+// ─── shared primitives ───────────────────────────────────────
+
+function Rule({ style }) {
+  return <div style={{ height:1, background:'var(--rule)', ...style }} />;
+}
+
+function Label({ children, style }) {
+  return (
+    <span style={{
+      fontFamily:'var(--f-data)', fontSize:9, letterSpacing:'0.14em',
+      textTransform:'uppercase', color:'var(--mid)', ...style
+    }}>{children}</span>
+  );
+}
+
+function DataVal({ children, size=14, style }) {
+  return (
+    <span style={{
+      fontFamily:'var(--f-data)', fontSize:size, color:'var(--ink)',
+      fontWeight:400, ...style
+    }}>{children}</span>
+  );
+}
+
+function RedTag({ children }) {
+  return (
+    <span style={{
+      fontFamily:'var(--f-data)', fontSize:9, letterSpacing:'0.12em',
+      textTransform:'uppercase', color:'var(--red)',
+      borderBottom:'1px solid var(--red)', paddingBottom:1
+    }}>{children}</span>
+  );
+}
+
+// ─── nav ────────────────────────────────────────────────────
+
+function Nav({ active, scrollTo }) {
+  const links = [
+    { id:'hero', label:'Produkt' },
+    { id:'spec', label:'Sortenmatrix' },
+    { id:'chain', label:'Lieferkette' },
+    { id:'b2b', label:'Musterbestellung' },
+  ];
+  return (
+    <nav>
+      <div className="nav-wordmark">Granat<em>apfel</em>kerne.de</div>
+      <div className="nav-center">
+        {links.map(l => (
+          <a key={l.id} className={`nav-link${active===l.id?' active':''}`}
+             onClick={() => scrollTo(l.id)}>{l.label}</a>
+        ))}
+      </div>
+      <div className="nav-right">
+        <button className="nav-cta" onClick={() => scrollTo('b2b')}>
+          Muster anfordern
+        </button>
+      </div>
+    </nav>
+  );
+}
+
+// ─── hero ────────────────────────────────────────────────────
+
+function Hero() {
+  const [brix, setBrix] = useState(16.4);
+  const [chargeTs, setChargeTs] = useState(Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => setBrix(b => parseFloat((b + (Math.random()-0.5)*0.15).toFixed(1)).valueOf()), 4000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <section id="hero" data-screen-label="01 Hero" style={{ paddingTop:52, minHeight:'100vh', display:'flex', flexDirection:'column' }}>
+      {/* Top bar */}
+      <div style={{ borderBottom:'1px solid var(--rule)', display:'flex', alignItems:'center', padding:'0 48px', height:36 }}>
+        <Label>Produktkategorie</Label>
+        <span style={{ fontFamily:'var(--f-data)', fontSize:9, color:'var(--ink)', marginLeft:16 }}>Arillus Punica granatum · IQF · Sortenrein</span>
+        <div style={{ marginLeft:'auto', display:'flex', alignItems:'center', gap:24 }}>
+          <Label>Charge WON-2025-1104</Label>
+          <span style={{ width:6, height:6, borderRadius:'50%', background:'#3A7A3A', display:'inline-block' }}/>
+          <Label style={{ color:'#3A7A3A' }}>Verfügbar</Label>
+        </div>
+      </div>
+
+      {/* Main hero grid */}
+      <div style={{ flex:1, display:'grid', gridTemplateColumns:'1fr 1fr', borderBottom:'1px solid var(--rule)' }}>
+
+        {/* Left: product statement */}
+        <div style={{ padding:'72px 48px', display:'flex', flexDirection:'column', justifyContent:'space-between', borderRight:'1px solid var(--rule)' }}>
+          <div>
+            <div style={{ marginBottom:48 }}>
+              <Label>Wonderful · ES/Murcia · Saison 2025</Label>
+            </div>
+            <h1 style={{
+              fontFamily:'var(--f-display)', fontWeight:700,
+              fontSize:96, lineHeight:0.9, letterSpacing:'-0.01em',
+              textTransform:'uppercase', color:'var(--ink)',
+              marginBottom:48
+            }}>
+              Granat-<br/>apfel-<br/>kerne
+            </h1>
+            <p style={{ fontSize:15, color:'var(--mid)', lineHeight:1.7, maxWidth:400, fontWeight:300 }}>
+              Sortenreine IQF-Arillus für die Lebensmittelindustrie. 25&nbsp;kg Aseptik-Verpackung. Lückenlose HACCP-Dokumentation.
+            </p>
+          </div>
+
+          {/* Spec strip */}
+          <div>
+            <Rule style={{ marginBottom:28 }}/>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(3, 1fr)', gap:0 }}>
+              {[
+                { label:'Brix-Wert', value: brix.toFixed(1), unit:'°Bx' },
+                { label:'Kernhärte', value:'6.8', unit:'/10' },
+                { label:'Sortenreinheit', value:'99.2', unit:'%' },
+              ].map((item, i) => (
+                <div key={i} style={{ paddingRight:24, borderRight: i<2 ? '1px solid var(--rule)' : 'none', paddingLeft: i>0 ? 24 : 0 }}>
+                  <Label>{item.label}</Label>
+                  <div style={{ marginTop:8 }}>
+                    <DataVal size={28}>{item.value}</DataVal>
+                    <DataVal size={11} style={{ color:'var(--mid)', marginLeft:4 }}>{item.unit}</DataVal>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Rule style={{ marginTop:28, marginBottom:28 }}/>
+            <div style={{ display:'flex', gap:12 }}>
+              <button onClick={() => document.getElementById('b2b').scrollIntoView({behavior:'smooth'})}
+                style={{ background:'var(--ink)', color:'var(--white)', border:'none', fontFamily:'var(--f-body)', fontSize:13, fontWeight:500, padding:'13px 28px', cursor:'pointer', transition:'background 0.15s' }}
+                onMouseEnter={e=>e.target.style.background='var(--red)'}
+                onMouseLeave={e=>e.target.style.background='var(--ink)'}>
+                Muster anfordern
+              </button>
+              <button style={{ background:'transparent', color:'var(--ink)', border:'1px solid var(--rule)', fontFamily:'var(--f-body)', fontSize:13, padding:'13px 28px', cursor:'pointer' }}>
+                Datenblatt PDF
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: image placeholder + analytical panel */}
+        <div style={{ display:'flex', flexDirection:'column' }}>
+          {/* Image placeholder – top 60% */}
+          <div style={{
+            flex:'0 0 58%',
+            background:'var(--paper)',
+            borderBottom:'1px solid var(--rule)',
+            display:'flex', alignItems:'center', justifyContent:'center',
+            position:'relative', overflow:'hidden'
+          }}>
+            {/* Striped placeholder */}
+            <div style={{
+              position:'absolute', inset:0,
+              backgroundImage:'repeating-linear-gradient(110deg, transparent 0, transparent 18px, var(--rule) 18px, var(--rule) 19px)',
+              opacity:0.35
+            }}/>
+            <div style={{ position:'relative', textAlign:'center' }}>
+              <svg viewBox="0 0 80 80" width="72" height="72" style={{ opacity:0.25 }}>
+                <circle cx="40" cy="40" r="32" fill="none" stroke="var(--ink)" strokeWidth="0.8"/>
+                {[...Array(16)].map((_,i) => (
+                  <circle key={i}
+                    cx={40+22*Math.cos(i/16*Math.PI*2)}
+                    cy={40+22*Math.sin(i/16*Math.PI*2)}
+                    r="3.5" fill="var(--ink)" opacity="0.7"/>
+                ))}
+                {[...Array(9)].map((_,i) => (
+                  <circle key={i}
+                    cx={40+11*Math.cos(i/9*Math.PI*2+0.5)}
+                    cy={40+11*Math.sin(i/9*Math.PI*2+0.5)}
+                    r="2.2" fill="var(--ink)" opacity="0.4"/>
+                ))}
+                <circle cx="40" cy="40" r="3" fill="var(--ink)" opacity="0.3"/>
+              </svg>
+              <div style={{ fontFamily:'var(--f-data)', fontSize:8, letterSpacing:'0.14em', color:'var(--light)', marginTop:12, textTransform:'uppercase' }}>
+                Makro-Aufnahme
+              </div>
+            </div>
+          </div>
+
+          {/* Analytical sub-panel */}
+          <div style={{ flex:1, padding:'28px 32px' }}>
+            <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:20 }}>
+              <Label>Analytische Parameter · Charge WON-2025-1104</Label>
+              <span style={{ fontFamily:'var(--f-data)', fontSize:8, color:'var(--red)', letterSpacing:'0.1em' }}>AOAC-METHODIK</span>
+            </div>
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', rowGap:0, columnGap:0 }}>
+              {[
+                { label:'pH-Wert', value:'3.19', ref:'3.0–3.5' },
+                { label:'Farbe L*', value:'31.8', ref:'CIE Lab' },
+                { label:'Anthocyan mg/100g', value:'214', ref:'HPLC' },
+                { label:'Farbe a*', value:'48.2', ref:'CIE Lab' },
+                { label:'Asche %', value:'0.48', ref:'ISO 936' },
+                { label:'Farbe b*', value:'21.6', ref:'CIE Lab' },
+                { label:'Aw-Wert (TK)', value:'0.92', ref:'nach Auftau' },
+                { label:'TPC KBE/g', value:'<500', ref:'ISO 4833' },
+              ].map((row, i) => (
+                <div key={i} style={{
+                  padding:'11px 0',
+                  borderBottom:'1px solid var(--rule)',
+                  borderRight: i%2===0 ? '1px solid var(--rule)' : 'none',
+                  paddingRight: i%2===0 ? 24 : 0,
+                  paddingLeft: i%2===1 ? 24 : 0,
+                  display:'flex', justifyContent:'space-between', alignItems:'baseline'
+                }}>
+                  <Label>{row.label}</Label>
+                  <div>
+                    <DataVal size={13}>{row.value}</DataVal>
+                    <span style={{ fontFamily:'var(--f-data)', fontSize:8, color:'var(--light)', marginLeft:6 }}>{row.ref}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── spec matrix ─────────────────────────────────────────────
+
+const VARIETIES = [
+  {
+    id:'wonderful', name:'Wonderful', origin:'Spanien / Murcia',
+    brix:[15.5,18.5], hardness:6.8, ph:3.2,
+    labL:32, labA:48, labB:22,
+    antho:'hoch', purity:99.2,
+    season:'Okt – Feb', avail:'Ganzjährig (IQF)',
+    certs:['IFS Food v8','BRC','Bio auf Anfrage'],
+    note:'Tiefe Rubinfarbe. Höchster Anthocyangehalt. Benchmark für Industrieanwendungen.',
+  },
+  {
+    id:'hicaz', name:'Hicaz', origin:'Türkei / Antalya',
+    brix:[14.0,16.5], hardness:5.4, ph:3.5,
+    labL:38, labA:42, labB:18,
+    antho:'mittel', purity:98.8,
+    season:'Sep – Jan', avail:'Saisonal',
+    certs:['IFS Food v8','Halal IFANCA'],
+    note:'Mildere Säure. Hellere Farbe. Ideal für Dessertanwendungen und Direktverzehr.',
+  },
+  {
+    id:'mollar', name:'Mollar de Elche', origin:'Spanien / Elche PDO',
+    brix:[13.0,15.0], hardness:3.2, ph:3.8,
+    labL:44, labA:36, labB:14,
+    antho:'niedrig', purity:99.5,
+    season:'Sep – Nov', avail:'Saisonal / begrenzt',
+    certs:['IFS Food v8','PDO-zertifiziert'],
+    note:'Weichste Textur. Niedrigste Säure. Bevorzugte Sorte für Getränkeanwendungen.',
+  },
+];
+
+function Bar({ value, max=20, color='var(--ink)' }) {
+  return (
+    <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+      <div style={{ flex:1, height:2, background:'var(--paper)', position:'relative' }}>
+        <div style={{ width:`${(value/max)*100}%`, height:'100%', background:color, transition:'width 0.5s ease' }}/>
+      </div>
+    </div>
+  );
+}
+
+function SpecMatrix() {
+  const [hover, setHover] = useState(null);
+  const [selected, setSelected] = useState('wonderful');
+
+  const params = [
+    { key:'brix', label:'Brix-Wert (Bereich)', render: v => (
+      <div>
+        <DataVal size={13}>{v.brix[0]}–{v.brix[1]} °Bx</DataVal>
+        <Bar value={v.brix[1]} max={22} color='var(--slate, #2F4F4F)'/>
+      </div>
+    )},
+    { key:'hardness', label:'Kernhärte Shore 1–10', render: v => (
+      <div>
+        <DataVal size={13}>{v.hardness}</DataVal>
+        <Bar value={v.hardness} max={10} color='var(--ink)'/>
+      </div>
+    )},
+    { key:'ph', label:'pH-Wert', render: v => <DataVal size={13}>{v.ph}</DataVal> },
+    { key:'lab', label:'Farbe CIE L*a*b*', render: v => {
+      const r = Math.min(255, v.labA*4+80), g = Math.max(0,80-v.labA), b2 = Math.max(0,v.labB-10);
+      return (
+        <div style={{ display:'flex', alignItems:'center', gap:10 }}>
+          <div style={{ width:16, height:16, background:`rgb(${r},${g},${b2})`, border:'1px solid var(--rule)', flexShrink:0 }}/>
+          <DataVal size={12}>{v.labL} / {v.labA} / {v.labB}</DataVal>
+        </div>
+      );
+    }},
+    { key:'antho', label:'Anthocyan-Gehalt', render: v => (
+      <span style={{ fontFamily:'var(--f-body)', fontSize:12, color: v.antho==='hoch' ? 'var(--red)' : 'var(--mid)' }}>
+        {v.antho.charAt(0).toUpperCase()+v.antho.slice(1)}
+      </span>
+    )},
+    { key:'purity', label:'Sortenreinheit', render: v => <DataVal size={13}>{v.purity}%</DataVal> },
+    { key:'season', label:'Saison', render: v => <span style={{ fontFamily:'var(--f-data)', fontSize:11, color:'var(--mid)' }}>{v.season}</span> },
+    { key:'avail', label:'Verfügbarkeit', render: v => <span style={{ fontFamily:'var(--f-body)', fontSize:12 }}>{v.avail}</span> },
+    { key:'certs', label:'Zertifikate', render: v => (
+      <div style={{ display:'flex', flexDirection:'column', gap:3 }}>
+        {v.certs.map(c => <span key={c} style={{ fontFamily:'var(--f-data)', fontSize:9, letterSpacing:'0.08em', color:'var(--mid)' }}>{c}</span>)}
+      </div>
+    )},
+    { key:'note', label:'Anwendungsempfehlung', render: v => (
+      <span style={{ fontFamily:'var(--f-body)', fontSize:12, color:'var(--mid)', lineHeight:1.5 }}>{v.note}</span>
+    )},
+  ];
+
+  return (
+    <section id="spec" data-screen-label="02 Sortenmatrix" style={{ padding:'96px 48px', borderTop:'1px solid var(--rule)' }}>
+      {/* Header */}
+      <div style={{ display:'grid', gridTemplateColumns:'auto 1fr auto', alignItems:'end', marginBottom:64, gap:32 }}>
+        <div>
+          <Label style={{ display:'block', marginBottom:12 }}>02 — Sortenmatrix</Label>
+          <h2 style={{ fontFamily:'var(--f-display)', fontWeight:700, fontSize:56, textTransform:'uppercase', letterSpacing:'-0.01em', lineHeight:0.95 }}>
+            Technische<br/>Spezifikation
+          </h2>
+        </div>
+        <div/>
+        <div style={{ textAlign:'right' }}>
+          <Label style={{ display:'block', marginBottom:4 }}>Alle Werte nach AOAC-Methodik</Label>
+          <Label style={{ display:'block' }}>Chargenprotokoll auf Anfrage · Probenahme ISO 2859-1</Label>
+        </div>
+      </div>
+
+      <Rule/>
+
+      {/* Table */}
+      <table style={{ width:'100%', borderCollapse:'collapse' }}>
+        <thead>
+          <tr>
+            <th style={{ textAlign:'left', padding:'20px 0', width:'25%' }}>
+              <Label>Parameter</Label>
+            </th>
+            {VARIETIES.map(v => (
+              <th key={v.id} style={{
+                textAlign:'left', padding:'20px 24px',
+                width:'25%',
+                borderLeft: '1px solid var(--rule)',
+                cursor:'pointer',
+              }} onClick={() => setSelected(v.id)}>
+                <div style={{ fontFamily:'var(--f-display)', fontSize:22, fontWeight:600, textTransform:'uppercase',
+                  color: selected===v.id ? 'var(--red)' : 'var(--ink)', transition:'color 0.2s' }}>
+                  {v.name}
+                </div>
+                <Label style={{ display:'block', marginTop:4 }}>{v.origin}</Label>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {params.map((p, pi) => (
+            <tr key={p.key}
+              onMouseEnter={() => setHover(pi)}
+              onMouseLeave={() => setHover(null)}
+              style={{ background: hover===pi ? 'var(--paper)' : 'transparent', transition:'background 0.1s' }}>
+              <td style={{ padding:'16px 0', borderTop:'1px solid var(--rule)', verticalAlign:'middle' }}>
+                <Label>{p.label}</Label>
+              </td>
+              {VARIETIES.map(v => (
+                <td key={v.id} style={{
+                  padding:'16px 24px',
+                  borderTop:'1px solid var(--rule)',
+                  borderLeft:'1px solid var(--rule)',
+                  verticalAlign:'middle',
+                  background: selected===v.id ? 'rgba(139,0,0,0.025)' : 'transparent',
+                  transition:'background 0.2s'
+                }}>
+                  {p.render(v)}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  );
+}
+
+// ─── chain of trust ──────────────────────────────────────────
+
+const CHAIN = [
+  { code:'01', title:'Handernte', place:'ES/Murcia', kpis:[['Brix-Eingangskontrolle','≥14.0 °Bx'],['Reifeindex','0.85–1.0'],['Erntezeitraum','Sep – Feb']] },
+  { code:'02', title:'Kühltransport', place:'2–8 °C', kpis:[['Maximaltemperatur','+8 °C'],['Transit','≤72 h'],['Logger','HACCP-konform']] },
+  { code:'03', title:'QS-Wareneingang', place:'Labor', kpis:[['Probenahme','ISO 2859-1'],['Mikrobiologie','TPC <10³'],['Pestizide','EU-VO 396/2005']] },
+  { code:'04', title:'Mechanische Schälung', place:'Werk', kpis:[['Reinheit post','≥99.0 %'],['Ausbeute','38–42 %'],['Zeit post-Ernte','<4 h']] },
+  { code:'05', title:'IQF-Schockfrost', place:'−35 °C', kpis:[['Kerntemperatur','≤−18 °C in 8 min'],['Gefrierrate','>0.5 °C/min'],['Drip loss','<3 %']] },
+  { code:'06', title:'Aseptik-Abfüllung', place:'GMP', kpis:[['Gebinde','25 kg Bag-in-Box'],['MHD','24 Monate'],['Kennzeichnung','EU 1169/2011']] },
+  { code:'07', title:'TK-Lagerung', place:'−20 °C ±2', kpis:[['Lagertemperatur','−20 °C ±2'],['Monitoring','24/7 Fernüberwachung'],['Kapazität','800 Paletten']] },
+  { code:'08', title:'B2B-Lieferung', place:'ATP-zert.', kpis:[['Mindestbestellung','1 Palette / 500 kg'],['Lieferzeit DE','24–72 h'],['Dokumente','CoA + CoO']] },
+];
+
+function Chain() {
+  const [active, setActive] = useState(0);
+
+  return (
+    <section id="chain" data-screen-label="03 Lieferkette" style={{ background:'var(--ink)', borderTop:'1px solid #222' }}>
+      {/* Header */}
+      <div style={{ padding:'72px 48px 48px', borderBottom:'1px solid #222' }}>
+        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
+          <div>
+            <Label style={{ color:'#555', display:'block', marginBottom:16 }}>03 — Chain of Trust</Label>
+            <h2 style={{ fontFamily:'var(--f-display)', fontWeight:700, fontSize:56, textTransform:'uppercase',
+              letterSpacing:'-0.01em', lineHeight:0.95, color:'var(--white)' }}>
+              Vom Strauch zur<br/>Aseptik-Verpackung
+            </h2>
+          </div>
+          <div style={{ textAlign:'right' }}>
+            <Label style={{ color:'#555', display:'block', marginBottom:4 }}>Lückenlose Rückverfolgbarkeit</Label>
+            <Label style={{ color:'#555', display:'block' }}>HACCP · GDP · ISO 22000</Label>
+          </div>
+        </div>
+      </div>
+
+      {/* Horizontal chain */}
+      <div className="chain-track">
+        {CHAIN.map((step, i) => (
+          <div key={i} onClick={() => setActive(i)}
+            style={{
+              minWidth:200, flexShrink:0,
+              padding:'36px 28px',
+              borderRight:'1px solid #1E1E1E',
+              cursor:'pointer',
+              background: active===i ? '#1A0000' : 'transparent',
+              transition:'background 0.2s',
+              position:'relative'
+            }}>
+            {active===i && (
+              <div style={{ position:'absolute', top:0, left:0, right:0, height:2, background:'var(--red)' }}/>
+            )}
+            <div style={{ fontFamily:'var(--f-data)', fontSize:9, letterSpacing:'0.16em', color: active===i?'var(--red)':'#444', marginBottom:12 }}>
+              {step.code} · {step.place}
+            </div>
+            <div style={{ fontFamily:'var(--f-display)', fontSize:20, fontWeight:600, textTransform:'uppercase',
+              color: active===i ? 'var(--white)' : '#666', marginBottom:28, letterSpacing:'0.01em' }}>
+              {step.title}
+            </div>
+            {step.kpis.map(([k,v], ki) => (
+              <div key={ki} style={{ marginBottom:ki<2?12:0, paddingTop:ki===0?12:0, borderTop:ki===0?'1px solid #1E1E1E':'none' }}>
+                <Label style={{ color:'#444', display:'block', marginBottom:3 }}>{k}</Label>
+                <DataVal size={12} style={{ color: active===i?'var(--white)':'#666' }}>{v}</DataVal>
+              </div>
+            ))}
+          </div>
+        ))}
+        <div style={{ minWidth:48, flexShrink:0 }}/>
+      </div>
+
+      {/* Progress */}
+      <div style={{ padding:'20px 48px', borderTop:'1px solid #1A1A1A', display:'flex', alignItems:'center', gap:16 }}>
+        <div style={{ flex:1, height:1, background:'#1E1E1E' }}>
+          <div style={{ width:`${((active+1)/CHAIN.length)*100}%`, height:'100%', background:'var(--red)', transition:'width 0.3s' }}/>
+        </div>
+        <Label style={{ color:'#444', whiteSpace:'nowrap' }}>Schritt {active+1} / {CHAIN.length}</Label>
+      </div>
+    </section>
+  );
+}
+
+// ─── b2b widget ──────────────────────────────────────────────
+
+function B2B() {
+  const [step, setStep] = useState(1);
+  const [done, setDone] = useState(false);
+  const [f, setF] = useState({
+    company:'', contact:'', email:'', phone:'',
+    variety:'Wonderful', unit:'25 kg Aseptik-Bag',
+    application:'', certs:[], note:'', timeline:'Innerhalb 4 Wochen'
+  });
+
+  const set = (k,v) => setF(p => ({...p,[k]:v}));
+  const toggleCert = c => set('certs', f.certs.includes(c) ? f.certs.filter(x=>x!==c) : [...f.certs,c]);
+
+  const certs = ['IFS Food v8','BRC Global Standard','Bio / Organic','Halal IFANCA','Kosher','PDO-Nachweis','CoA je Charge'];
+  const apps = ['Lebensmittelproduktion','Getränkeindustrie','Großgastronomie','Handelsabpackung','Nutraceuticals'];
+
+  const fieldStyle = { marginBottom:16 };
+  const labelStyle = { display:'block', fontFamily:'var(--f-data)', fontSize:9, letterSpacing:'0.12em', textTransform:'uppercase', color:'var(--mid)', marginBottom:6 };
+
+  if (done) return (
+    <section id="b2b" data-screen-label="04 Musterbestellung" style={{ padding:'96px 48px', borderTop:'1px solid var(--rule)' }}>
+      <div style={{ maxWidth:520 }}>
+        <Label style={{ display:'block', marginBottom:24, color:'var(--red)' }}>Anfrage eingegangen</Label>
+        <h2 style={{ fontFamily:'var(--f-display)', fontWeight:700, fontSize:48, textTransform:'uppercase', letterSpacing:'-0.01em', lineHeight:0.95, marginBottom:32 }}>
+          Eingangs-<br/>bestätigung
+        </h2>
+        <Rule style={{ marginBottom:28 }}/>
+        <div style={{ display:'grid', gridTemplateColumns:'auto 1fr', rowGap:12, columnGap:24 }}>
+          {[
+            ['Referenz', `MUS-${Date.now().toString().slice(-6)}`],
+            ['Unternehmen', f.company],
+            ['Sorte', f.variety],
+            ['Gebinde', f.unit],
+            ['Antwortzeit', '≤24 h durch QS-Team'],
+          ].map(([k,v]) => (
+            <React.Fragment key={k}>
+              <Label>{k}</Label>
+              <DataVal size={13}>{v}</DataVal>
+            </React.Fragment>
+          ))}
+        </div>
+        <Rule style={{ marginTop:28, marginBottom:28 }}/>
+        <button onClick={() => { setDone(false); setStep(1); setF({...f,company:'',contact:'',email:''}); }}
+          style={{ background:'transparent', color:'var(--mid)', border:'1px solid var(--rule)', fontFamily:'var(--f-body)', fontSize:12, padding:'11px 24px', cursor:'pointer' }}>
+          Neue Anfrage
+        </button>
+      </div>
+    </section>
+  );
+
+  return (
+    <section id="b2b" data-screen-label="04 Musterbestellung" style={{ borderTop:'1px solid var(--rule)' }}>
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', minHeight:'80vh' }}>
+
+        {/* Left info column */}
+        <div style={{ padding:'96px 48px', borderRight:'1px solid var(--rule)', display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+          <div>
+            <Label style={{ display:'block', marginBottom:16 }}>04 — Musterbestellung</Label>
+            <h2 style={{ fontFamily:'var(--f-display)', fontWeight:700, fontSize:56, textTransform:'uppercase', letterSpacing:'-0.01em', lineHeight:0.95, marginBottom:32 }}>
+              QS-Muster<br/>anfordern
+            </h2>
+            <p style={{ fontSize:14, color:'var(--mid)', lineHeight:1.7, fontWeight:300, maxWidth:380, marginBottom:48 }}>
+              Jede Musterlieferung umfasst Chargenanalyse (CoA), Herkunftsnachweis (CoO), Pestizidbefund und mikrobiologischen Befund.
+            </p>
+
+            {/* Spec grid */}
+            <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:0, border:'1px solid var(--rule)' }}>
+              {[
+                ['Mustermenge','500 g – 2 kg'],
+                ['Lieferzeit','48 – 96 h'],
+                ['Kosten','Kostenfrei'],
+                ['Verpackung','Aseptik-Vakuum'],
+              ].map(([k,v], i) => (
+                <div key={i} style={{
+                  padding:'16px',
+                  borderRight: i%2===0 ? '1px solid var(--rule)' : 'none',
+                  borderBottom: i<2 ? '1px solid var(--rule)' : 'none'
+                }}>
+                  <Label style={{ display:'block', marginBottom:6 }}>{k}</Label>
+                  <DataVal size={13}>{v}</DataVal>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Step indicator */}
+          <div style={{ marginTop:48 }}>
+            <Rule style={{ marginBottom:24 }}/>
+            <div style={{ display:'flex', gap:0 }}>
+              {['Unternehmen','Produkt','QS'].map((s,i) => (
+                <div key={i} style={{ display:'flex', alignItems:'center', gap:0 }}>
+                  <div style={{ display:'flex', alignItems:'center', gap:10, cursor: step>i+1?'pointer':'default' }}
+                    onClick={() => step>i+1 && setStep(i+1)}>
+                    <div style={{
+                      width:22, height:22, display:'flex', alignItems:'center', justifyContent:'center',
+                      background: step>=i+1 ? 'var(--ink)' : 'var(--paper)',
+                      color: step>=i+1 ? 'var(--white)' : 'var(--mid)',
+                      fontFamily:'var(--f-data)', fontSize:10, transition:'all 0.2s'
+                    }}>{i+1}</div>
+                    <Label style={{ color: step>=i+1?'var(--ink)':'var(--mid)' }}>{s}</Label>
+                  </div>
+                  {i<2 && <div style={{ width:24, height:1, background:'var(--rule)', margin:'0 12px' }}/>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right form */}
+        <div style={{ padding:'96px 48px' }}>
+
+          {step===1 && (
+            <>
+              <Label style={{ display:'block', marginBottom:32, color:'var(--red)' }}>Schritt 1 — Unternehmensdaten</Label>
+              {[
+                { k:'company', label:'Unternehmen *', ph:'Muster Lebensmittel GmbH' },
+                { k:'contact', label:'Ansprechpartner / Funktion *', ph:'Dr. Max Mustermann, QS-Leiter' },
+                { k:'email', label:'E-Mail *', ph:'qs@unternehmen.de' },
+                { k:'phone', label:'Telefon', ph:'+49 XXX XXXXXXX' },
+              ].map(field => (
+                <div key={field.k} style={fieldStyle}>
+                  <label style={labelStyle}>{field.label}</label>
+                  <input value={f[field.k]} onChange={e => set(field.k, e.target.value)} placeholder={field.ph}/>
+                </div>
+              ))}
+              <button onClick={() => (f.company&&f.contact&&f.email) && setStep(2)}
+                style={{ width:'100%', background:'var(--ink)', color:'var(--white)', border:'none', fontFamily:'var(--f-body)', fontSize:13, fontWeight:500, padding:'13px', cursor:'pointer', marginTop:8,
+                  opacity:(f.company&&f.contact&&f.email)?1:0.3, transition:'opacity 0.2s, background 0.15s' }}
+                onMouseEnter={e=>{if(f.company&&f.contact&&f.email)e.target.style.background='var(--red)'}}
+                onMouseLeave={e=>e.target.style.background='var(--ink)'}>
+                Weiter zu Produktspezifikation →
+              </button>
+            </>
+          )}
+
+          {step===2 && (
+            <>
+              <Label style={{ display:'block', marginBottom:32, color:'var(--red)' }}>Schritt 2 — Produktspezifikation</Label>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Gewünschte Sorte</label>
+                <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:0, border:'1px solid var(--rule)' }}>
+                  {['Wonderful','Hicaz','Mollar'].map((v,i) => (
+                    <button key={v} onClick={() => set('variety',v)}
+                      style={{ padding:'11px 0', border:'none', borderRight:i<2?'1px solid var(--rule)':'none',
+                        fontFamily:'var(--f-body)', fontSize:12, cursor:'pointer',
+                        background:f.variety===v?'var(--ink)':'transparent',
+                        color:f.variety===v?'var(--white)':'var(--mid)',
+                        transition:'all 0.15s' }}>
+                      {v}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Gewünschtes Gebinde</label>
+                <select value={f.unit} onChange={e => set('unit',e.target.value)}>
+                  {['25 kg Aseptik-Bag','10 kg Karton (IQF)','1 kg Vakuumbeutel (Muster)','Sonstiges'].map(o=><option key={o}>{o}</option>)}
+                </select>
+              </div>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Anwendungsbereich</label>
+                <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:0, border:'1px solid var(--rule)' }}>
+                  {apps.map((a,i) => (
+                    <button key={a} onClick={() => set('application',a)}
+                      style={{ padding:'11px 14px', border:'none',
+                        borderRight: i%2===0?'1px solid var(--rule)':'none',
+                        borderBottom: i<apps.length-1?'1px solid var(--rule)':'none',
+                        fontFamily:'var(--f-body)', fontSize:12, cursor:'pointer', textAlign:'left',
+                        background:f.application===a?'var(--paper)':'transparent',
+                        color:f.application===a?'var(--ink)':'var(--mid)',
+                        transition:'all 0.15s' }}>
+                      {a}
+                    </button>
+                  ))}
+                </div>
+              </div>
+              <div style={{ display:'flex', gap:8 }}>
+                <button onClick={()=>setStep(1)} style={{ flex:'0 0 auto', background:'transparent', color:'var(--mid)', border:'1px solid var(--rule)', fontFamily:'var(--f-body)', fontSize:12, padding:'11px 20px', cursor:'pointer' }}>← Zurück</button>
+                <button onClick={()=>f.application&&setStep(3)}
+                  style={{ flex:1, background:'var(--ink)', color:'var(--white)', border:'none', fontFamily:'var(--f-body)', fontSize:13, fontWeight:500, padding:'11px', cursor:'pointer', opacity:f.application?1:0.3, transition:'opacity 0.2s' }}>
+                  Weiter zu QS-Anforderungen →
+                </button>
+              </div>
+            </>
+          )}
+
+          {step===3 && (
+            <>
+              <Label style={{ display:'block', marginBottom:32, color:'var(--red)' }}>Schritt 3 — QS-Anforderungen</Label>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Benötigte Zertifikate (Mehrfachauswahl)</label>
+                <div style={{ border:'1px solid var(--rule)' }}>
+                  {certs.map((c,i) => (
+                    <div key={c} onClick={() => toggleCert(c)}
+                      style={{ padding:'10px 14px', borderBottom:i<certs.length-1?'1px solid var(--rule)':'none',
+                        display:'flex', alignItems:'center', justifyContent:'space-between', cursor:'pointer',
+                        background:f.certs.includes(c)?'var(--paper)':'transparent', transition:'background 0.1s' }}>
+                      <span style={{ fontFamily:'var(--f-body)', fontSize:12, color:f.certs.includes(c)?'var(--ink)':'var(--mid)' }}>{c}</span>
+                      <span style={{ fontFamily:'var(--f-data)', fontSize:11, color:f.certs.includes(c)?'var(--ink)':'var(--rule)' }}>
+                        {f.certs.includes(c)?'✓':'○'}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Gewünschter Lieferzeitraum</label>
+                <select value={f.timeline} onChange={e=>set('timeline',e.target.value)}>
+                  {['Innerhalb 1 Woche','Innerhalb 4 Wochen','1–3 Monate','Rahmenvertrag / langfristig'].map(o=><option key={o}>{o}</option>)}
+                </select>
+              </div>
+              <div style={fieldStyle}>
+                <label style={labelStyle}>Sonderwünsche QS / Analysen</label>
+                <textarea rows={3} value={f.note} onChange={e=>set('note',e.target.value)}
+                  placeholder="z.B. Schwermetall-Screening, spezifische Allergen-Zertifizierung, Kühlkettenformat..."/>
+              </div>
+              <div style={{ display:'flex', gap:8 }}>
+                <button onClick={()=>setStep(2)} style={{ flex:'0 0 auto', background:'transparent', color:'var(--mid)', border:'1px solid var(--rule)', fontFamily:'var(--f-body)', fontSize:12, padding:'11px 20px', cursor:'pointer' }}>← Zurück</button>
+                <button onClick={()=>setDone(true)}
+                  style={{ flex:1, background:'var(--red)', color:'var(--white)', border:'none', fontFamily:'var(--f-body)', fontSize:13, fontWeight:500, padding:'11px', cursor:'pointer' }}>
+                  Musteranfrage absenden →
+                </button>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ─── seo footer nav ──────────────────────────────────────────
+
+function Footer() {
+  const cats = [
+    { t:'Sorten', links:['Wonderful','Hicaz','Hicaznar','Mollar de Elche','Bio-Granatapfelkerne','IQF-Granatapfelkerne'] },
+    { t:'Herkunft', links:['Spanien / Murcia','Spanien / Elche PDO','Türkei / Antalya','Iran','Israel','Ägypten (Saisonal)'] },
+    { t:'Anwendung', links:['Lebensmittelproduktion','Getränkeindustrie','Foodservice & Catering','Handelsabpackung','Nutraceuticals'] },
+    { t:'Qualität', links:['IFS Food v8','BRC Global Standard','HACCP-Dokumentation','CoA je Charge','Pestizidbefunde','GDP-Konformität'] },
+  ];
+
+  return (
+    <>
+      <section id="seo" data-screen-label="05 Sorten & Herkunft" style={{ borderTop:'1px solid var(--rule)', padding:'80px 48px' }}>
+        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:0, borderLeft:'1px solid var(--rule)' }}>
+          {cats.map(cat => (
+            <div key={cat.t} style={{ padding:'0 40px', borderRight:'1px solid var(--rule)' }}>
+              <Label style={{ display:'block', marginBottom:20 }}>{cat.t}</Label>
+              {cat.links.map(l => (
+                <div key={l} style={{ marginBottom:10 }}>
+                  <a href="#" style={{ fontFamily:'var(--f-body)', fontSize:13, color:'var(--mid)', textDecoration:'none', transition:'color 0.15s' }}
+                    onMouseEnter={e=>e.target.style.color='var(--ink)'}
+                    onMouseLeave={e=>e.target.style.color='var(--mid)'}>
+                    {l}
+                  </a>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </section>
+      <footer style={{ borderTop:'1px solid var(--rule)', padding:'24px 48px', display:'flex', justifyContent:'space-between', alignItems:'center' }}>
+        <Label>Granatapfelkerne.de · Premium Arils B2B · © 2026</Label>
+        <Label>IFS · BRC · HACCP · GDP · ISO 22000</Label>
+        <Label>Impressum · Datenschutz · AGB</Label>
+      </footer>
+    </>
+  );
+}
+
+// ─── tweaks ──────────────────────────────────────────────────
+
+function TweaksPanel({ open, tweaks, setTweaks }) {
+  if (!open) return null;
+  return (
+    <div className="tweaks-panel open">
+      <div className="tw-title">Tweaks</div>
+      <label>
+        Akzentfarbe
+        <select value={tweaks.accentColor} onChange={e => {
+          const c = e.target.value;
+          setTweaks({...tweaks, accentColor:c});
+          document.documentElement.style.setProperty('--red', c);
+          window.parent.postMessage({type:'__edit_mode_set_keys', edits:{accentColor:c}},'*');
+        }}>
+          <option value="#8B0000">Pomegranate Red</option>
+          <option value="#2F4F4F">Slate Green</option>
+          <option value="#1C3A5A">Navy</option>
+          <option value="#5A3A00">Amber</option>
+        </select>
+      </label>
+      <label>
+        Hintergrund
+        <select onChange={e => {
+          document.documentElement.style.setProperty('--white', e.target.value);
+          document.documentElement.style.setProperty('--paper', e.target.value==='#F7F6F3'?'#EEECEA':'#EBEBEB');
+          document.documentElement.style.setProperty('--rule', e.target.value==='#F7F6F3'?'#D8D5CE':'#DEDEDE');
+        }}>
+          <option value="#F7F6F3">Warm Paper</option>
+          <option value="#F5F7F8">Cool White</option>
+          <option value="#FFFFFF">Neutral White</option>
+        </select>
+      </label>
+      <label>
+        Überschriften-Font
+        <select onChange={e => {
+          document.documentElement.style.setProperty('--f-display', e.target.value);
+        }}>
+          <option value="'Barlow Condensed', sans-serif">Barlow Condensed</option>
+          <option value="'DM Sans', sans-serif">DM Sans</option>
+          <option value="Georgia, serif">Georgia Serif</option>
+        </select>
+      </label>
+    </div>
+  );
+}
+
+// ─── app ─────────────────────────────────────────────────────
+
+function App() {
+  const [active, setActive] = useState('hero');
+  const [tweaksOpen, setTweaksOpen] = useState(false);
+  const [tweaks, setTweaks] = useState(TWEAK_DEFAULTS);
+
+  useEffect(() => {
+    window.addEventListener('message', e => {
+      if (e.data?.type === '__activate_edit_mode') setTweaksOpen(true);
+      if (e.data?.type === '__deactivate_edit_mode') setTweaksOpen(false);
+    });
+    window.parent.postMessage({type:'__edit_mode_available'},'*');
+  }, []);
+
+  useEffect(() => {
+    const ids = ['hero','spec','chain','b2b'];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { threshold:0.25 });
+    ids.forEach(id => { const el = document.getElementById(id); if(el) obs.observe(el); });
+    return () => obs.disconnect();
+  }, []);
+
+  const scrollTo = id => {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({ top: el.offsetTop - 52, behavior:'smooth' });
+  };
+
+  return (
+    <>
+      <Nav active={active} scrollTo={scrollTo}/>
+      <Hero/>
+      <SpecMatrix/>
+      <Chain/>
+      <B2B/>
+      <Footer/>
+      <TweaksPanel open={tweaksOpen} tweaks={tweaks} setTweaks={setTweaks}/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

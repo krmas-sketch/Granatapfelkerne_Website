@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import styles from '../app/[lang]/page.module.css';
+import VarietiesMap from './VarietiesMap';
 
 export default function HomeClient({ homeData, products, lang }: { homeData: any, products: any[], lang: string }) {
   // Use data from markdown
@@ -58,6 +59,8 @@ export default function HomeClient({ homeData, products, lang }: { homeData: any
           ))}
         </div>
       </section>
+
+      <VarietiesMap lang={lang} />
 
       <section className={styles.aboutSection}>
         <div className={styles.aboutGrid}>
