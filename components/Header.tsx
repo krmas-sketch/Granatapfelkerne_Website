@@ -9,7 +9,13 @@ export default async function Header({ lang }: { lang: string }) {
   return (
     <header className={styles.header}>
       <div className={styles.logoWrap}>
-        <Link href={`/${lang}`} className={styles.logo}>Granatapfelkerne®</Link>
+        <Link href={`/${lang}`} className={styles.logo}>
+          {navData?.logo ? (
+            <img src={navData.logo} alt="Granatapfelkerne Logo" style={{ maxHeight: '60px', width: 'auto', display: 'block' }} />
+          ) : (
+            "Granatapfelkerne®"
+          )}
+        </Link>
       </div>
       <nav className={styles.nav}>
         <ul className={styles.menuLinks}>

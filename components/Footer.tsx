@@ -11,7 +11,13 @@ export default async function Footer({ lang }: { lang: string }) {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.logoWrap}>
-            <Link href={`/${lang}`} className={styles.logo}>Granatapfelkerne®</Link>
+            <Link href={`/${lang}`} className={styles.logo}>
+              {navData?.logo ? (
+                <img src={navData.logo} alt="Granatapfelkerne Logo" style={{ maxHeight: '60px', width: 'auto', display: 'block' }} />
+              ) : (
+                "Granatapfelkerne®"
+              )}
+            </Link>
           </div>
           <ul className={styles.menuLinks}>
             {links.map((link: any, idx: number) => (

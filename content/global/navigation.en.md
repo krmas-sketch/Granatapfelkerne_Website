@@ -10,6 +10,7 @@ links:
     href: /ueber-uns
   - title: Contact
     href: /kontakt
+logo: "/logo.png"
 email: hallo@granatapfelkerne.de
 phone: "+49 123 456789"
 address: "Musterstraße 1, 20095 Hamburg, Germany"
