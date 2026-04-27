@@ -51,8 +51,8 @@ export default function HomeClient({ homeData, products, lang }: { homeData: any
                 <div className={styles.numWrap}>
                   <span className={styles.num}>00-{idx + 1}</span>
                 </div>
-                <div className={styles.imgWrap}>
-                  <img src={product.image} alt={product.title} />
+                <div className={`${styles.imgWrap} zoom-container`}>
+                  <img src={product.image} alt={product.title} className="zoom-on-hover" />
                 </div>
                 <div className={styles.line} />
                 <div className={styles.caseInfo}>

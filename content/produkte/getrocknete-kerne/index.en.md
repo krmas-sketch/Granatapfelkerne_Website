@@ -1,6 +1,17 @@
 ---
-title: "Dried Seeds"
+title: "Dried Arils"
 brix: "N/A"
-image: "https://images.unsplash.com/photo-1541513233804-ba0901e4a552?q=80&w=3024&auto=format&fit=crop"
+image: "/images/getrocknete-kerne.png"
 ---
-Description for Dried Seeds.
+
+### Concentrated Flavor for Industry Applications
+
+Our gently dried pomegranate arils stand out with their deep red color and unmistakable, fruity-tart aroma. The controlled dehydration process maximizes the natural flavor while ensuring the arils retain a pleasant texture.
+
+**Applications:**
+They are perfectly suited for muesli and cereal production, as an ingredient in fruit bars, tea blends, or as a premium topping in the snack sector.
+
+**B2B Advantages:**
+- **Long Shelf Life:** Resilient against temperature fluctuations and easy to store.
+- **High Yield:** Intense flavor requires only small quantities per batch.
+- **All-Natural:** 100% fruit with no added sugar or preservatives.

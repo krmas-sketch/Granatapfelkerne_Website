@@ -1,6 +1,17 @@
 ---
-title: "Öl von den Granatapfelkernen"
+title: "Granatapfelkernöl"
 brix: "N/A"
-image: "https://images.unsplash.com/photo-1601002821105-090c2834b677?q=80&w=2938&auto=format&fit=crop"
+image: "/images/oel.png"
 ---
-Beschreibung für Öl von den Granatapfelkernen.
+
+### Das flüssige Gold für Kosmetik und Gesundheit
+
+Unser Granatapfelkernöl ist ein hochreines, kaltgepresstes Premium-Öl, das aus den getrockneten Samen der Frucht gewonnen wird. Es ist eines der wenigen Pflanzenöle, das Punicinsäure (Omega-5-Fettsäure) in hoher Konzentration enthält.
+
+**Einsatz in der Industrie:**
+Aufgrund seiner stark antioxidativen und zellregenerierenden Eigenschaften ist unser Öl ein gefragter Rohstoff in der Naturkosmetik (Anti-Aging-Cremes, Seren) sowie in der pharmazeutischen Industrie und für Nahrungsergänzungsmittel.
+
+**Qualitätsgarantie:**
+- **Kaltgepresst:** 100% naturbelassen und lösungsmittelfrei.
+- **Premium-Qualität:** Höchste Reinheit und strengste Laboranalysen.
+- **Großabnehmer-Gebinde:** Verfügbar in Fässern und IBC-Containern für industrielle Verarbeiter.

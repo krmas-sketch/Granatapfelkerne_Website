@@ -1,6 +1,16 @@
 ---
 title: "Ganze Granatäpfel"
 brix: "15-17°"
-image: "https://images.unsplash.com/photo-1601002821105-090c2834b677?q=80&w=2938&auto=format&fit=crop"
+image: "/images/ganze-granataepfel.png"
 ---
-Beschreibung für Ganze Granatäpfel.
+
+### Premium Qualität für den B2B-Handel
+
+Unsere ganzen Granatäpfel repräsentieren die höchste Qualitätsstufe auf dem Markt. Als etablierter Akteur am Hamburger Großmarkt legen wir größten Wert auf eine lückenlose Kühlkette und strengste Qualitätskontrollen. 
+
+Jede Frucht wird sorgfältig ausgewählt, um ein optimales Verhältnis von Süße zu Säure (Brix 15-17°) sowie eine makellose Schale zu garantieren. Perfekt geeignet für den Premium-Einzelhandel, Gastronomie-Zulieferer und Fruchtveredeler.
+
+**Ihre Vorteile:**
+- **Konstante Verfügbarkeit:** Direkter Bezug über unsere Handelsnetzwerke.
+- **Zertifizierte Frische:** Strenge Qualitätsprüfung in Hamburg.
+- **Lange Haltbarkeit:** Optimal gelagert für maximale Frische bei Anlieferung.
