@@ -48,17 +48,11 @@ export default function HomeClient({ homeData, products, lang }: { homeData: any
           {products.map((product, idx) => (
             <a key={product.slug} href={`/${lang}/produkte/${product.slug}`} className={styles.caseCard}>
               <div className={styles.caseInner}>
-                <div className={styles.numWrap}>
-                  <span className={styles.num}>00-{idx + 1}</span>
-                </div>
+                <h3>{product.title}</h3>
                 <div className={`${styles.imgWrap} zoom-container`}>
                   <img src={product.image} alt={product.title} className="zoom-on-hover" />
                 </div>
                 <div className={styles.line} />
-                <div className={styles.caseInfo}>
-                  <span>Brix: {product.brix}</span>
-                </div>
-                <h3>{product.title}</h3>
               </div>
             </a>
           ))}
