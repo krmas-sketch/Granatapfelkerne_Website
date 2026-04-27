@@ -63,41 +63,41 @@ export default function VarietiesMap({ lang }: { lang: string }) {
   const params = [
     { key: 'brix', label: 'Brix-Wert (Bereich)', render: (v: typeof VARIETIES[0]) => (
       <div>
-        <div style={{ fontSize: '13px', fontFamily: 'monospace', marginBottom: '4px' }}>{v.brix[0]}–{v.brix[1]} °Bx</div>
+        <div style={{ fontSize: '12px', marginBottom: '4px', fontWeight: 500 }}>{v.brix[0]}–{v.brix[1]} °Bx</div>
         <Bar value={v.brix[1]} max={22} color="var(--foreground)" />
       </div>
     )},
     { key: 'hardness', label: 'Kernhärte Shore 1–10', render: (v: typeof VARIETIES[0]) => (
       <div>
-        <div style={{ fontSize: '13px', fontFamily: 'monospace', marginBottom: '4px' }}>{v.hardness}</div>
+        <div style={{ fontSize: '12px', marginBottom: '4px', fontWeight: 500 }}>{v.hardness}</div>
         <Bar value={v.hardness} max={10} color="var(--foreground)" />
       </div>
     )},
-    { key: 'ph', label: 'pH-Wert', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '13px', fontFamily: 'monospace' }}>{v.ph}</div> },
+    { key: 'ph', label: 'pH-Wert', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '12px', fontWeight: 500 }}>{v.ph}</div> },
     { key: 'lab', label: 'Farbe CIE L*a*b*', render: (v: typeof VARIETIES[0]) => {
       const r = Math.min(255, v.labA * 4 + 80), g = Math.max(0, 80 - v.labA), b2 = Math.max(0, v.labB - 10);
       return (
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 16, height: 16, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)', flexShrink: 0 }} />
-          <div style={{ fontSize: '12px', fontFamily: 'monospace' }}>{v.labL} / {v.labA} / {v.labB}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <div style={{ width: 14, height: 14, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)', flexShrink: 0, borderRadius: '2px' }} />
+          <div style={{ fontSize: '11px', fontWeight: 500 }}>{v.labL} / {v.labA} / {v.labB}</div>
         </div>
       );
     }},
     { key: 'antho', label: 'Anthocyan-Gehalt', render: (v: typeof VARIETIES[0]) => (
-      <span style={{ fontSize: '12px', color: v.antho === 'hoch' ? 'var(--accent)' : 'var(--grey)' }}>
+      <span style={{ fontSize: '12px', color: v.antho === 'hoch' ? 'var(--accent)' : 'var(--grey)', fontWeight: 500 }}>
         {v.antho.charAt(0).toUpperCase() + v.antho.slice(1)}
       </span>
     )},
-    { key: 'purity', label: 'Sortenreinheit', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '13px', fontFamily: 'monospace' }}>{v.purity}%</div> },
-    { key: 'season', label: 'Saison', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '11px', fontFamily: 'monospace', color: 'var(--grey)' }}>{v.season}</span> },
-    { key: 'avail', label: 'Verfügbarkeit', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '12px' }}>{v.avail}</span> },
+    { key: 'purity', label: 'Sortenreinheit', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '12px', fontWeight: 500 }}>{v.purity}%</div> },
+    { key: 'season', label: 'Saison', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '11px', color: 'var(--grey)', fontWeight: 500 }}>{v.season}</span> },
+    { key: 'avail', label: 'Verfügbarkeit', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '11px', fontWeight: 500 }}>{v.avail}</span> },
     { key: 'certs', label: 'Zertifikate', render: (v: typeof VARIETIES[0]) => (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-        {v.certs.map((c: string) => <span key={c} style={{ fontSize: '9px', fontFamily: 'monospace', letterSpacing: '0.08em', color: 'var(--grey)' }}>{c}</span>)}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        {v.certs.map((c: string) => <span key={c} style={{ fontSize: '10px', letterSpacing: '0.05em', color: 'var(--grey)' }}>{c}</span>)}
       </div>
     )},
     { key: 'note', label: 'Anwendungsempfehlung', render: (v: typeof VARIETIES[0]) => (
-      <span style={{ fontSize: '12px', color: 'var(--grey)', lineHeight: 1.5 }}>{v.note}</span>
+      <span style={{ fontSize: '11px', color: 'var(--grey)', lineHeight: 1.4 }}>{v.note}</span>
     )},
   ];
 
@@ -116,7 +116,7 @@ export default function VarietiesMap({ lang }: { lang: string }) {
         <div className={styles.mapContainer}>
           <ComposableMap 
             projection="geoMercator" 
-            projectionConfig={{ scale: 50, center: [0, 30] }}
+            projectionConfig={{ scale: 65, center: [0, 20] }}
             style={{ width: "100%", height: "100%" }}
           >
             <Geographies geography={geoUrl}>
