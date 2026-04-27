@@ -8,7 +8,7 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const VARIETIES = [
   {
-    id: 'wonderful', name: 'Wonderful', origin: 'Spanien / Murcia', countryName: 'Spain',
+    id: 'wonderful', name: 'Wonderful', origin: 'Spanien / Murcia', countryNames: ['Spain'],
     brix: [15.5, 18.5], hardness: 6.8, ph: 3.2,
     labL: 32, labA: 48, labB: 22,
     antho: 'hoch', purity: 99.2,
@@ -17,7 +17,7 @@ const VARIETIES = [
     note: 'Tiefe Rubinfarbe. Höchster Anthocyangehalt. Benchmark für Industrieanwendungen.',
   },
   {
-    id: 'hicaz', name: 'Hicaz', origin: 'Türkei / Antalya', countryName: 'Turkey',
+    id: 'hicaz', name: 'Hicaz', origin: 'Türkei / Antalya', countryNames: ['Turkey'],
     brix: [14.0, 16.5], hardness: 5.4, ph: 3.5,
     labL: 38, labA: 42, labB: 18,
     antho: 'mittel', purity: 98.8,
@@ -26,7 +26,7 @@ const VARIETIES = [
     note: 'Mildere Säure. Hellere Farbe. Ideal für Dessertanwendungen und Direktverzehr.',
   },
   {
-    id: 'mollar', name: 'Mollar de Elche', origin: 'Spanien / Elche PDO', countryName: 'Spain',
+    id: 'mollar', name: 'Mollar de Elche', origin: 'Spanien / Elche PDO', countryNames: ['Spain'],
     brix: [13.0, 15.0], hardness: 3.2, ph: 3.8,
     labL: 44, labA: 36, labB: 14,
     antho: 'niedrig', purity: 99.5,
@@ -35,7 +35,7 @@ const VARIETIES = [
     note: 'Weichste Textur. Niedrigste Säure. Bevorzugte Sorte für Getränkeanwendungen.',
   },
   {
-    id: 'argentina', name: 'Wonderful (Südhalbkugel)', origin: 'Argentinien', countryName: 'Argentina',
+    id: 'argentina', name: 'Wonderful (Südhalbkugel)', origin: 'Argentinien', countryNames: ['Argentina', 'Peru'],
     brix: [15.0, 18.0], hardness: 6.5, ph: 3.2,
     labL: 32, labA: 48, labB: 22,
     antho: 'hoch', purity: 99.2,
@@ -116,13 +116,14 @@ export default function VarietiesMap({ lang }: { lang: string }) {
         <div className={styles.mapContainer}>
           <ComposableMap 
             projection="geoMercator" 
-            projectionConfig={{ scale: 65, center: [0, 20] }}
+            projectionConfig={{ scale: 120, center: [10, 15] }}
             style={{ width: "100%", height: "100%" }}
+            viewBox="0 0 800 450"
           >
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
                 geographies.map((geo) => {
-                  const isHighlighted = geo.properties.name === selectedVariety.countryName;
+                  const isHighlighted = selectedVariety.countryNames.includes(geo.properties.name);
                   return (
                     <Geography
                       key={geo.rsmKey}
