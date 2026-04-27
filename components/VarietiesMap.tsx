@@ -8,103 +8,115 @@ const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 const VARIETIES = [
   {
-    id: 'wonderful',
-    name: 'Wonderful',
-    origin: 'Spanien / Murcia',
-    countryName: 'Spain',
-    brix: '15.5–18.5 °Bx',
-    hardness: '6.8 / 10',
-    color: 'Tiefe Rubinfarbe',
-    note: 'Höchster Anthocyangehalt. Benchmark für Industrieanwendungen.'
+    id: 'wonderful', name: 'Wonderful', origin: 'Spanien / Murcia', countryName: 'Spain',
+    brix: [15.5, 18.5], hardness: 6.8, ph: 3.2,
+    labL: 32, labA: 48, labB: 22,
+    antho: 'hoch', purity: 99.2,
+    season: 'Okt – Feb', avail: 'Ganzjährig (IQF)',
+    certs: ['IFS Food v8', 'BRC', 'Bio auf Anfrage'],
+    note: 'Tiefe Rubinfarbe. Höchster Anthocyangehalt. Benchmark für Industrieanwendungen.',
   },
   {
-    id: 'hicaz',
-    name: 'Hicaz',
-    origin: 'Türkei / Antalya',
-    countryName: 'Turkey',
-    brix: '14.0–16.5 °Bx',
-    hardness: '5.4 / 10',
-    color: 'Hellere rote Farbe',
-    note: 'Mildere Säure. Ideal für Dessertanwendungen und Direktverzehr.'
+    id: 'hicaz', name: 'Hicaz', origin: 'Türkei / Antalya', countryName: 'Turkey',
+    brix: [14.0, 16.5], hardness: 5.4, ph: 3.5,
+    labL: 38, labA: 42, labB: 18,
+    antho: 'mittel', purity: 98.8,
+    season: 'Sep – Jan', avail: 'Saisonal',
+    certs: ['IFS Food v8', 'Halal IFANCA'],
+    note: 'Mildere Säure. Hellere Farbe. Ideal für Dessertanwendungen und Direktverzehr.',
   },
   {
-    id: 'mollar',
-    name: 'Mollar de Elche',
-    origin: 'Spanien / Elche PDO',
-    countryName: 'Spain',
-    brix: '13.0–15.0 °Bx',
-    hardness: '3.2 / 10',
-    color: 'Hellere rosa-rote Farbe',
-    note: 'Weichste Textur. Niedrigste Säure. Bevorzugte Sorte für Getränkeanwendungen.'
+    id: 'mollar', name: 'Mollar de Elche', origin: 'Spanien / Elche PDO', countryName: 'Spain',
+    brix: [13.0, 15.0], hardness: 3.2, ph: 3.8,
+    labL: 44, labA: 36, labB: 14,
+    antho: 'niedrig', purity: 99.5,
+    season: 'Sep – Nov', avail: 'Saisonal / begrenzt',
+    certs: ['IFS Food v8', 'PDO-zertifiziert'],
+    note: 'Weichste Textur. Niedrigste Säure. Bevorzugte Sorte für Getränkeanwendungen.',
   },
   {
-    id: 'argentina',
-    name: 'Wonderful (Südhalbkugel)',
-    origin: 'Argentinien',
-    countryName: 'Argentina',
-    brix: '15.0–18.0 °Bx',
-    hardness: '6.5 / 10',
-    color: 'Tiefe Rubinfarbe',
-    note: 'Sichert unsere ganzjährige Verfügbarkeit (Off-Season).'
+    id: 'argentina', name: 'Wonderful (Südhalbkugel)', origin: 'Argentinien', countryName: 'Argentina',
+    brix: [15.0, 18.0], hardness: 6.5, ph: 3.2,
+    labL: 32, labA: 48, labB: 22,
+    antho: 'hoch', purity: 99.2,
+    season: 'März – Juli', avail: 'Saisonal / Off-Season',
+    certs: ['GlobalG.A.P.', 'HACCP'],
+    note: 'Sichert unsere ganzjährige Verfügbarkeit (Off-Season) bei konstanter Industrie-Qualität.',
   }
 ];
 
-export default function VarietiesMap({ lang }: { lang: string }) {
-  const [selectedId, setSelectedId] = useState(VARIETIES[0].id);
+function Bar({ value, max = 20, color = 'var(--foreground)' }: { value: number, max?: number, color?: string }) {
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10, position: 'relative' }}>
+      <div style={{ flex: 1, height: 2, background: 'var(--grey)', opacity: 0.3 }} />
+      <div style={{ position: 'absolute', width: `${(value / max) * 100}%`, height: 2, background: color, transition: 'width 0.5s ease' }} />
+    </div>
+  );
+}
 
-  const selectedVariety = VARIETIES.find(v => v.id === selectedId) || VARIETIES[0];
+export default function VarietiesMap({ lang }: { lang: string }) {
+  const [hoverRow, setHoverRow] = useState<number | null>(null);
+  const [selectedCol, setSelectedCol] = useState('wonderful');
+
+  const selectedVariety = VARIETIES.find(v => v.id === selectedCol) || VARIETIES[0];
+
+  const params = [
+    { key: 'brix', label: 'Brix-Wert (Bereich)', render: (v: typeof VARIETIES[0]) => (
+      <div>
+        <div style={{ fontSize: '13px', fontFamily: 'monospace', marginBottom: '4px' }}>{v.brix[0]}–{v.brix[1]} °Bx</div>
+        <Bar value={v.brix[1]} max={22} color="var(--foreground)" />
+      </div>
+    )},
+    { key: 'hardness', label: 'Kernhärte Shore 1–10', render: (v: typeof VARIETIES[0]) => (
+      <div>
+        <div style={{ fontSize: '13px', fontFamily: 'monospace', marginBottom: '4px' }}>{v.hardness}</div>
+        <Bar value={v.hardness} max={10} color="var(--foreground)" />
+      </div>
+    )},
+    { key: 'ph', label: 'pH-Wert', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '13px', fontFamily: 'monospace' }}>{v.ph}</div> },
+    { key: 'lab', label: 'Farbe CIE L*a*b*', render: (v: typeof VARIETIES[0]) => {
+      const r = Math.min(255, v.labA * 4 + 80), g = Math.max(0, 80 - v.labA), b2 = Math.max(0, v.labB - 10);
+      return (
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ width: 16, height: 16, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)', flexShrink: 0 }} />
+          <div style={{ fontSize: '12px', fontFamily: 'monospace' }}>{v.labL} / {v.labA} / {v.labB}</div>
+        </div>
+      );
+    }},
+    { key: 'antho', label: 'Anthocyan-Gehalt', render: (v: typeof VARIETIES[0]) => (
+      <span style={{ fontSize: '12px', color: v.antho === 'hoch' ? 'var(--accent)' : 'var(--grey)' }}>
+        {v.antho.charAt(0).toUpperCase() + v.antho.slice(1)}
+      </span>
+    )},
+    { key: 'purity', label: 'Sortenreinheit', render: (v: typeof VARIETIES[0]) => <div style={{ fontSize: '13px', fontFamily: 'monospace' }}>{v.purity}%</div> },
+    { key: 'season', label: 'Saison', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '11px', fontFamily: 'monospace', color: 'var(--grey)' }}>{v.season}</span> },
+    { key: 'avail', label: 'Verfügbarkeit', render: (v: typeof VARIETIES[0]) => <span style={{ fontSize: '12px' }}>{v.avail}</span> },
+    { key: 'certs', label: 'Zertifikate', render: (v: typeof VARIETIES[0]) => (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+        {v.certs.map((c: string) => <span key={c} style={{ fontSize: '9px', fontFamily: 'monospace', letterSpacing: '0.08em', color: 'var(--grey)' }}>{c}</span>)}
+      </div>
+    )},
+    { key: 'note', label: 'Anwendungsempfehlung', render: (v: typeof VARIETIES[0]) => (
+      <span style={{ fontSize: '12px', color: 'var(--grey)', lineHeight: 1.5 }}>{v.note}</span>
+    )},
+  ];
 
   return (
     <section className={styles.section}>
+      {/* Header */}
       <div className={styles.header}>
-        <h2>{lang === 'de' ? 'Sortenmatrix & Herkunft' : 'Varieties & Origin'}</h2>
-        <p>{lang === 'de' ? 'Wählen Sie eine Sorte, um spezifische Eigenschaften und das Herkunftsland auf der Weltkarte zu sehen.' : 'Select a variety to view its specific properties and origin on the world map.'}</p>
-      </div>
-
-      <div className={styles.grid}>
-        {/* Left column: Selector and Data */}
-        <div className={styles.dataCol}>
-          <div className={styles.tabs}>
-            {VARIETIES.map((v) => (
-              <button 
-                key={v.id} 
-                className={`${styles.tab} ${selectedId === v.id ? styles.activeTab : ''}`}
-                onClick={() => setSelectedId(v.id)}
-              >
-                {v.name}
-              </button>
-            ))}
-          </div>
-
-          <div className={styles.detailsCard}>
-            <div className={styles.detailRow}>
-              <span className={styles.label}>{lang === 'de' ? 'Herkunft' : 'Origin'}</span>
-              <span className={styles.value} style={{ color: 'var(--accent)', fontWeight: 'bold' }}>{selectedVariety.origin}</span>
-            </div>
-            <div className={styles.detailRow}>
-              <span className={styles.label}>Brix-Wert</span>
-              <span className={styles.value}>{selectedVariety.brix}</span>
-            </div>
-            <div className={styles.detailRow}>
-              <span className={styles.label}>{lang === 'de' ? 'Kernhärte (1-10)' : 'Hardness (1-10)'}</span>
-              <span className={styles.value}>{selectedVariety.hardness}</span>
-            </div>
-            <div className={styles.detailRow}>
-              <span className={styles.label}>{lang === 'de' ? 'Farbe' : 'Color'}</span>
-              <span className={styles.value}>{selectedVariety.color}</span>
-            </div>
-            <div className={styles.detailRow} style={{ borderBottom: 'none', flexDirection: 'column', alignItems: 'flex-start', gap: '0.5rem' }}>
-              <span className={styles.label}>{lang === 'de' ? 'Anwendungsempfehlung' : 'Application Note'}</span>
-              <span className={styles.value}>{selectedVariety.note}</span>
-            </div>
-          </div>
+        <div>
+          <span className={styles.subtitle}>02 — Sortenmatrix</span>
+          <h2 className={styles.title}>
+            Technische<br/>Spezifikation
+          </h2>
         </div>
-
-        {/* Right column: Map */}
-        <div className={styles.mapCol}>
+        
+        {/* Small Interactive Map */}
+        <div className={styles.mapContainer}>
           <ComposableMap 
             projection="geoMercator" 
-            projectionConfig={{ scale: 120, center: [0, 20] }}
+            projectionConfig={{ scale: 50, center: [0, 30] }}
             style={{ width: "100%", height: "100%" }}
           >
             <Geographies geography={geoUrl}>
@@ -116,11 +128,10 @@ export default function VarietiesMap({ lang }: { lang: string }) {
                       key={geo.rsmKey}
                       geography={geo}
                       fill={isHighlighted ? "var(--accent)" : "var(--grey)"}
-                      stroke="var(--background)"
-                      strokeWidth={0.5}
+                      stroke="transparent"
                       style={{
                         default: { outline: "none", transition: "all 0.3s" },
-                        hover: { outline: "none", fill: isHighlighted ? "var(--accent)" : "var(--grey)", opacity: 0.8 },
+                        hover: { outline: "none", fill: isHighlighted ? "var(--accent)" : "var(--grey)" },
                         pressed: { outline: "none" }
                       }}
                     />
@@ -130,6 +141,51 @@ export default function VarietiesMap({ lang }: { lang: string }) {
             </Geographies>
           </ComposableMap>
         </div>
+
+        <div className={styles.metaText}>
+          <span style={{ display: 'block', marginBottom: '4px' }}>Alle Werte nach AOAC-Methodik</span>
+          <span style={{ display: 'block' }}>Chargenprotokoll auf Anfrage · Probenahme ISO 2859-1</span>
+        </div>
+      </div>
+
+      <div style={{ height: 1, background: 'var(--grey)', opacity: 0.3, marginBottom: '0' }} />
+
+      {/* Table */}
+      <div className={styles.tableWrapper}>
+        <table className={styles.table}>
+          <thead>
+            <tr>
+              <th className={styles.th} style={{ width: '20%', borderLeft: 'none' }}>
+                <span className={styles.tdLabel}>Parameter</span>
+              </th>
+              {VARIETIES.map(v => (
+                <th key={v.id} className={`${styles.th} ${selectedCol === v.id ? styles.selectedCol : ''}`} style={{ width: '20%' }} onClick={() => setSelectedCol(v.id)}>
+                  <div className={styles.colName} style={{ color: selectedCol === v.id ? 'var(--accent)' : 'var(--foreground)' }}>
+                    {v.name}
+                  </div>
+                  <span className={styles.colOrigin}>{v.origin}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {params.map((p, pi) => (
+              <tr key={p.key}
+                onMouseEnter={() => setHoverRow(pi)}
+                onMouseLeave={() => setHoverRow(null)}
+                className={hoverRow === pi ? styles.trHover : ''}>
+                <td className={styles.td} style={{ borderLeft: 'none' }}>
+                  <span className={styles.tdLabel}>{p.label}</span>
+                </td>
+                {VARIETIES.map(v => (
+                  <td key={v.id} className={`${styles.td} ${selectedCol === v.id ? styles.selectedCol : ''}`}>
+                    {p.render(v)}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </section>
   );
