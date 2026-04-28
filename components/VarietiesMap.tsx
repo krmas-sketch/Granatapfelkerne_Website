@@ -123,7 +123,7 @@ export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: st
               <div className={styles.labelCol}><span className={styles.label}>Zertifikate</span></div>
               <div className={styles.valCol}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  {selectedVariety.certs.map(c => (
+                  {selectedVariety.certs.map((c: string) => (
                     <span key={c} className={styles.certBadge}>{c}</span>
                   ))}
                 </div>
