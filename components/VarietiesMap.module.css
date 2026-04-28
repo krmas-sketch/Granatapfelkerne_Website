@@ -1,6 +1,7 @@
 .section {
   padding: 8rem 4rem;
   border-top: 1px solid var(--grey);
+  background-color: var(--background);
 }
 
 .header {
@@ -8,39 +9,49 @@
   max-width: 600px;
 }
 
-.header h2 {
-  font-size: 3rem;
+.preTitle {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey);
   margin-bottom: 1rem;
 }
 
-.header p {
-  color: var(--grey);
-  line-height: 1.6;
+.header h2 {
+  font-size: 4rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
+  grid-template-columns: 1fr 1fr;
   gap: 4rem;
 }
 
 .tabs {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 0.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .tab {
   background: none;
   border: 1px solid var(--grey);
-  padding: 1rem;
+  padding: 0.8rem 1.5rem;
   text-align: left;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   color: var(--foreground);
   transition: all 0.2s ease;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .tab:hover {
@@ -53,42 +64,82 @@
   color: white !important;
 }
 
-.detailsCard {
-  background-color: var(--foreground);
-  color: var(--background);
-  border-radius: 12px;
-  padding: 2rem;
+.specTable {
+  border-top: 1px solid rgba(140, 140, 140, 0.2);
 }
 
-.detailRow {
+.tableRow {
   display: flex;
-  justify-content: space-between;
+  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+}
+
+.labelCol {
+  width: 40%;
+  padding: 1.5rem 0;
+  border-right: 1px solid rgba(140, 140, 140, 0.2);
+  display: flex;
   align-items: center;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.valCol {
+  width: 60%;
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .label {
-  font-size: 0.8rem;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.7;
+  letter-spacing: 0.15em;
+  color: var(--grey);
 }
 
-.value {
-  font-weight: 500;
-  text-align: right;
-  max-width: 60%;
+.valText {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.varietyHeader {
+  display: flex;
+  flex-direction: column;
+}
+
+.varietyName {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  letter-spacing: 0.02em;
+  margin-bottom: 0.2rem;
+}
+
+.varietyOrigin {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+}
+
+.certBadge {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--grey);
 }
 
 .mapCol {
-  background-color: rgba(140, 140, 140, 0.05);
-  border-radius: 20px;
+  background-color: rgba(140, 140, 140, 0.03);
+  border-radius: 4px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
+  border: 1px solid rgba(140, 140, 140, 0.2);
 }
 
 @media (max-width: 1024px) {
@@ -102,6 +153,19 @@
     padding: 4rem 2rem;
   }
   .header h2 {
-    font-size: 2rem;
+    font-size: 2.5rem;
+  }
+  .tableRow {
+    flex-direction: column;
+  }
+  .labelCol {
+    width: 100%;
+    border-right: none;
+    padding-bottom: 0.5rem;
+  }
+  .valCol {
+    width: 100%;
+    padding-top: 0;
+    padding-left: 0;
   }
 }
