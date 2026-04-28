@@ -6,73 +6,6 @@ import styles from './VarietiesMap.module.css';
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-const VARIETIES = [
-  {
-    id: 'wonderful',
-    name: 'Wonderful',
-    origin: 'Spanien / Murcia',
-    countryName: 'Spain',
-    brix: [15.5, 18.5],
-    hardness: 6.8,
-    ph: 3.2,
-    labL: 32, labA: 48, labB: 22,
-    antho: 'Hoch',
-    purity: 99.2,
-    season: 'Okt – Feb',
-    avail: 'Ganzjährig (IQF)',
-    certs: ['IFS Food v8', 'BRC', 'Bio auf Anfrage'],
-    note: 'Tiefe Rubinfarbe. Höchster Anthocyangehalt. Benchmark für Industrieanwendungen.'
-  },
-  {
-    id: 'hicaz',
-    name: 'Hicaz',
-    origin: 'Türkei / Antalya',
-    countryName: 'Turkey',
-    brix: [14.0, 16.5],
-    hardness: 5.4,
-    ph: 3.5,
-    labL: 38, labA: 42, labB: 18,
-    antho: 'Mittel',
-    purity: 98.8,
-    season: 'Sep – Jan',
-    avail: 'Saisonal',
-    certs: ['IFS Food v8', 'Halal IFANCA'],
-    note: 'Mildere Säure. Hellere Farbe. Ideal für Dessertanwendungen und Direktverzehr.'
-  },
-  {
-    id: 'mollar',
-    name: 'Mollar de Elche',
-    origin: 'Spanien / Elche PDO',
-    countryName: 'Spain',
-    brix: [13.0, 15.0],
-    hardness: 3.2,
-    ph: 3.8,
-    labL: 44, labA: 36, labB: 14,
-    antho: 'Niedrig',
-    purity: 99.5,
-    season: 'Sep – Nov',
-    avail: 'Saisonal / begrenzt',
-    certs: ['IFS Food v8', 'PDO-zertifiziert'],
-    note: 'Weichste Textur. Niedrigste Säure. Bevorzugte Sorte für Getränkeanwendungen.'
-  },
-  {
-    id: 'argentina',
-    name: 'Wonderful (Südhalbkugel)',
-    origin: 'Argentinien',
-    countryName: 'Argentina',
-    brix: [15.0, 18.0],
-    hardness: 6.5,
-    ph: 3.2,
-    labL: 33, labA: 46, labB: 20,
-    antho: 'Hoch',
-    purity: 99.0,
-    season: 'März – Juli',
-    avail: 'Ganzjährig (IQF)',
-    certs: ['IFS Food v8', 'BRC'],
-    note: 'Sichert unsere ganzjährige Verfügbarkeit (Off-Season).'
-  }
-];
-
 function Bar({ value, max = 20, color = 'var(--foreground)' }: { value: number, max?: number, color?: string }) {
   return (
     <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: '8px' }}>
@@ -82,9 +15,11 @@ function Bar({ value, max = 20, color = 'var(--foreground)' }: { value: number, 
   );
 }
 
-export default function VarietiesMap({ lang }: { lang: string }) {
-  const [selectedId, setSelectedId] = useState(VARIETIES[0].id);
-  const selectedVariety = VARIETIES.find(v => v.id === selectedId) || VARIETIES[0];
+export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: string }) {
+  const [selectedId, setSelectedId] = useState(sorten[0]?.id || '');
+  const selectedVariety = sorten.find(v => v.id === selectedId) || sorten[0];
+
+  if (!selectedVariety) return null;
 
   const r = Math.min(255, selectedVariety.labA * 4 + 80);
   const g = Math.max(0, 80 - selectedVariety.labA);
@@ -101,7 +36,7 @@ export default function VarietiesMap({ lang }: { lang: string }) {
         {/* Left column: Selector and Data Table */}
         <div className={styles.dataCol}>
           <div className={styles.tabs}>
-            {VARIETIES.map((v) => (
+            {sorten.map((v) => (
               <button 
                 key={v.id} 
                 className={`${styles.tab} ${selectedId === v.id ? styles.activeTab : ''}`}
@@ -214,22 +149,24 @@ export default function VarietiesMap({ lang }: { lang: string }) {
           >
             <Geographies geography={geoUrl}>
               {({ geographies }) =>
-                geographies.map((geo) => {
-                  const isHighlighted = geo.properties.name === selectedVariety.countryName;
-                  return (
-                    <Geography
-                      key={geo.rsmKey}
-                      geography={geo}
-                      fill={isHighlighted ? "var(--accent)" : "var(--background)"}
-                      stroke={isHighlighted ? "var(--accent)" : "var(--grey)"}
-                      strokeWidth={isHighlighted ? 0 : 0.5}
-                      style={{
-                        default: { outline: "none", transition: "all 0.3s" },
-                        hover: { outline: "none", fill: isHighlighted ? "var(--accent)" : "var(--grey)", opacity: 0.8 },
-                        pressed: { outline: "none" }
-                      }}
-                    />
-                  );
+                geographies
+                  .filter(geo => geo.properties.name !== "Antarctica")
+                  .map((geo) => {
+                    const isHighlighted = selectedVariety.countryNames.includes(geo.properties.name);
+                    return (
+                      <Geography
+                        key={geo.rsmKey}
+                        geography={geo}
+                        fill={isHighlighted ? "var(--accent)" : "var(--background)"}
+                        stroke={isHighlighted ? "var(--accent)" : "var(--grey)"}
+                        strokeWidth={isHighlighted ? 0 : 0.5}
+                        style={{
+                          default: { outline: "none", transition: "all 0.3s" },
+                          hover: { outline: "none", fill: isHighlighted ? "var(--accent)" : "var(--grey)", opacity: 0.8 },
+                          pressed: { outline: "none" }
+                        }}
+                      />
+                    );
                 })
               }
             </Geographies>

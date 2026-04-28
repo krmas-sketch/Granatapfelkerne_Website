@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import styles from '../app/[lang]/page.module.css';
 import VarietiesMap from './VarietiesMap';
 
-export default function HomeClient({ homeData, products, lang }: { homeData: any, products: any[], lang: string }) {
+export default function HomeClient({ homeData, products, sorten, lang }: { homeData: any, products: any[], sorten: any[], lang: string }) {
   // Use data from markdown
   const heroText = homeData.heroTexts || [];
   const subTexts = homeData.heroSubtexts || [];
@@ -60,7 +60,7 @@ export default function HomeClient({ homeData, products, lang }: { homeData: any
         </div>
       </section>
 
-      <VarietiesMap lang={lang} />
+      <VarietiesMap sorten={sorten} lang={lang} />
 
       <section className={styles.aboutSection}>
         <div className={styles.aboutGrid}>

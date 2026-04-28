@@ -1,5 +1,5 @@
 .section {
-  padding: 8rem 4rem;
+  padding: 6rem 4rem;
   border-top: 1px solid var(--grey);
   background-color: var(--background);
 }
@@ -19,7 +19,7 @@
 }
 
 .header h2 {
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 1;
   text-transform: uppercase;
   letter-spacing: -0.01em;
@@ -28,7 +28,7 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 .tabs {
@@ -91,15 +91,16 @@
 
 .label {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   color: var(--grey);
 }
 
 .valText {
-  font-size: 1.1rem;
+  font-size: 14px;
   font-weight: 400;
+  color: var(--foreground);
 }
 
 .varietyHeader {
@@ -108,7 +109,7 @@
 }
 
 .varietyName {
-  font-size: 1.5rem;
+  font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--accent);
@@ -118,7 +119,7 @@
 
 .varietyOrigin {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
+  font-size: 9px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--grey);
@@ -126,19 +127,19 @@
 
 .certBadge {
   font-family: var(--font-mono), monospace;
-  font-size: 0.75rem;
-  letter-spacing: 0.1em;
+  font-size: 9px;
+  letter-spacing: 0.08em;
   color: var(--grey);
 }
 
 .mapCol {
-  background-color: rgba(140, 140, 140, 0.03);
+  background-color: transparent;
   border-radius: 4px;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   border: 1px solid rgba(140, 140, 140, 0.2);
 }
 

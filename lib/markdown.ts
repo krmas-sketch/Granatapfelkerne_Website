@@ -69,3 +69,28 @@ export function getAllProducts(lang: string) {
   
   return products;
 }
+
+export function getAllSorten(lang: string) {
+  const sortenDir = path.join(contentDirectory, 'sorten');
+  if (!fs.existsSync(sortenDir)) return [];
+  
+  const sortenFolders = fs.readdirSync(sortenDir);
+  
+  const sorten = sortenFolders.map(folder => {
+    const fullPath = path.join(sortenDir, folder, `index.${lang}.md`);
+    try {
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const matterResult = matter(fileContents);
+      return {
+        slug: folder,
+        ...matterResult.data,
+        note: matterResult.content.trim(), // The markdown body acts as the note
+      } as any;
+    } catch (e) {
+      return null;
+    }
+  }).filter(p => p !== null);
+  
+  // Sort by order field
+  return sorten.sort((a, b) => (a.order || 0) - (b.order || 0));
+}
