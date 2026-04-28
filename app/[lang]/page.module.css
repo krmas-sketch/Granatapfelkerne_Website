@@ -156,8 +156,9 @@
 }
 
 .btnContainer:hover {
-  background-color: var(--foreground);
+  background-color: var(--accent);
   color: var(--background);
+  border-color: var(--accent);
 }
 
 @media (max-width: 768px) {

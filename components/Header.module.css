@@ -39,7 +39,7 @@
   position: absolute;
   width: 100%;
   height: 1px;
-  background-color: var(--foreground);
+  background-color: var(--accent);
   bottom: 0;
   left: -100%;
   transition: transform 0.3s ease;
