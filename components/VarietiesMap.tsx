@@ -89,9 +89,9 @@ export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: st
 
             <div className={styles.tableRow}>
               <div className={styles.labelCol}><span className={styles.label}>Farbe CIE L*a*b*</span></div>
-              <div className={styles.valCol} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                <div style={{ width: 16, height: 16, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)' }} />
-                <div className={styles.valText}>{selectedVariety.labL} / {selectedVariety.labA} / {selectedVariety.labB}</div>
+              <div className={styles.valCol} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+                <div style={{ width: 16, height: 16, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)', flexShrink: 0 }} />
+                <div className={styles.valText} style={{ fontSize: '12px' }}>{selectedVariety.labL} / {selectedVariety.labA} / {selectedVariety.labB}</div>
               </div>
             </div>
 
@@ -111,12 +111,12 @@ export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: st
 
             <div className={styles.tableRow}>
               <div className={styles.labelCol}><span className={styles.label}>Saison</span></div>
-              <div className={styles.valCol}><div className={styles.valText} style={{ opacity: 0.7 }}>{selectedVariety.season}</div></div>
+              <div className={styles.valCol}><div className={styles.valText} style={{ fontSize: '11px', opacity: 0.7, fontFamily: 'var(--font-mono), monospace' }}>{selectedVariety.season}</div></div>
             </div>
 
             <div className={styles.tableRow}>
               <div className={styles.labelCol}><span className={styles.label}>Verfügbarkeit</span></div>
-              <div className={styles.valCol}><div className={styles.valText}>{selectedVariety.avail}</div></div>
+              <div className={styles.valCol}><div className={styles.valText} style={{ fontSize: '12px' }}>{selectedVariety.avail}</div></div>
             </div>
 
             <div className={styles.tableRow}>
@@ -133,7 +133,7 @@ export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: st
             <div className={styles.tableRow} style={{ borderBottom: 'none' }}>
               <div className={styles.labelCol}><span className={styles.label}>Anwendungsempfehlung</span></div>
               <div className={styles.valCol}>
-                <div className={styles.valText} style={{ opacity: 0.7, lineHeight: 1.5 }}>{selectedVariety.note}</div>
+                <div className={styles.valText} style={{ fontSize: '12px', opacity: 0.7, lineHeight: 1.5 }}>{selectedVariety.note}</div>
               </div>
             </div>
 
