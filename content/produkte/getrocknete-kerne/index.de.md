@@ -2,6 +2,8 @@
 title: "Getrocknete Kerne"
 brix: "N/A"
 image: "/images/getrocknete-kerne.png"
+order: 4
+summary: "Schonend getrocknete Kerne mit intensivem Aroma und langer Haltbarkeit, ideal für Müsli, Backwaren und Snacks."
 ---
 
 ### Konzentrierter Geschmack für die Industrie

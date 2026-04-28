@@ -2,6 +2,8 @@
 title: "Ganze Granatäpfel"
 brix: "15-17°"
 image: "/images/ganze-granataepfel.png"
+order: 1
+summary: "Handverlesene Premium-Früchte aus den besten Anbauregionen, ideal für den direkten Verkauf oder die Weiterverarbeitung."
 ---
 
 ### Premium Qualität für den B2B-Handel

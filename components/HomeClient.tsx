@@ -45,18 +45,27 @@ export default function HomeClient({ homeData, products, sorten, lang }: { homeD
         <header className={styles.caseHeader}>
           <h2>{lang === 'de' ? 'Unsere Produkte.' : 'Our Products.'}</h2>
         </header>
-        <div className={styles.studiesGrid}>
-          {products.map((product, idx) => (
-            <a key={product.slug} href={`/${lang}/produkte/${product.slug}`} className={styles.caseCard}>
-              <div className={styles.caseInner}>
-                <h3>{product.title}</h3>
-                <div className={`${styles.imgWrap} zoom-container`}>
-                  <img src={product.image} alt={product.title} className="zoom-on-hover" />
+        <div className={styles.productRows}>
+          {products.map((product, idx) => {
+            const isEven = idx % 2 === 0;
+            return (
+              <div key={product.slug} className={`${styles.productRow} ${isEven ? styles.rowEven : styles.rowOdd}`}>
+                <div className={styles.productImageCol}>
+                  <div className={`${styles.imgWrap} zoom-container`}>
+                    <img src={product.image} alt={product.title} className="zoom-on-hover" />
+                  </div>
                 </div>
-                <div className={styles.line} />
+                
+                <div className={styles.productTextCol}>
+                  <h3 className={styles.productTitle}>{product.title}</h3>
+                  <p className={styles.productSummary}>{product.summary}</p>
+                  <a href={`/${lang}/produkte/${product.slug}`} className={styles.btnContainer}>
+                    <span className={styles.btnText}>{lang === 'de' ? 'Mehr erfahren' : 'Learn more'}</span>
+                  </a>
+                </div>
               </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </section>
 

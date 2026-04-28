@@ -2,6 +2,8 @@
 title: "Frische Kerne"
 brix: "16-18°"
 image: "/images/frische-kerne.png"
+order: 2
+summary: "Sofort einsatzbereite, leuchtend rote Kerne mit perfekter Balance aus Süße und Säure für Gastronomie und Industrie."
 ---
 
 ### Täglich frisch produziert am Hamburger Großmarkt

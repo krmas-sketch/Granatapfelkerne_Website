@@ -2,6 +2,8 @@
 title: "Whole Pomegranates"
 brix: "15-17°"
 image: "/images/ganze-granataepfel.png"
+order: 1
+summary: "Hand-picked premium fruits from the best growing regions, ideal for direct retail or further processing."
 ---
 
 ### Premium Quality for B2B Commerce

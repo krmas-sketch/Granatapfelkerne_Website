@@ -2,6 +2,8 @@
 title: "Granatapfelkernöl"
 brix: "N/A"
 image: "/images/oel.png"
+order: 5
+summary: "Hochwertiges, kaltgepresstes Granatapfelkernöl, reich an Punicinsäure – perfekt für die Kosmetik- und Pharmaindustrie."
 ---
 
 ### Das flüssige Gold für Kosmetik und Gesundheit

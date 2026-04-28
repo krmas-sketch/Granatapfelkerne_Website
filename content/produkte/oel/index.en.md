@@ -2,6 +2,8 @@
 title: "Pomegranate Seed Oil"
 brix: "N/A"
 image: "/images/oel.png"
+order: 5
+summary: "High-quality, cold-pressed pomegranate seed oil, rich in punicic acid – perfect for the cosmetics and pharmaceutical industry."
 ---
 
 ### Liquid Gold for Cosmetics and Health

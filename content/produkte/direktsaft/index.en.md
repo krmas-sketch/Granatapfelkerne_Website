@@ -2,6 +2,8 @@
 title: "Direct Juice"
 brix: "14-16°"
 image: "/images/direktsaft.png"
+order: 3
+summary: "100% pure, gently cold-pressed direct juice with no additives. A powerful raw material for beverages and supplements."
 ---
 
 ### 100% Pure NFC Juice with No Additives

@@ -2,6 +2,8 @@
 title: "Fresh Arils"
 brix: "16-18°"
 image: "/images/frische-kerne.png"
+order: 2
+summary: "Ready-to-use, bright red arils with a perfect balance of sweetness and acidity for gastronomy and industry."
 ---
 
 ### Produced Fresh Daily at the Hamburg Wholesale Market

@@ -2,6 +2,8 @@
 title: "Dried Arils"
 brix: "N/A"
 image: "/images/getrocknete-kerne.png"
+order: 4
+summary: "Gently dried seeds with intense flavor and long shelf life, ideal for muesli, baked goods, and snacks."
 ---
 
 ### Concentrated Flavor for Industry Applications

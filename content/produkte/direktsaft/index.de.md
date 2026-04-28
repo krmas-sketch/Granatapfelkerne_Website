@@ -2,6 +2,8 @@
 title: "Direktsaft"
 brix: "14-16°"
 image: "/images/direktsaft.png"
+order: 3
+summary: "100% purer, schonend kaltgepresster Direktsaft ohne Zusätze. Ein kraftvoller Rohstoff für Getränke und Supplements."
 ---
 
 ### 100% Purer Direktsaft ohne Zusätze

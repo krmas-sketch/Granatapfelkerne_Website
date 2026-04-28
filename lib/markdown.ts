@@ -67,7 +67,8 @@ export function getAllProducts(lang: string) {
     }
   }).filter(p => p !== null);
   
-  return products;
+  // Sort by order field
+  return products.sort((a, b) => (a.order || 0) - (b.order || 0));
 }
 
 export function getAllSorten(lang: string) {
