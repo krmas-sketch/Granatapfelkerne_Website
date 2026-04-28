@@ -2,14 +2,14 @@
   --background: #f0f0f0;
   --foreground: #1a1a1a;
   --grey: #8c8c8c;
-  --accent: #d32f2f; /* Pomegranate red */
+  --accent: #8B0000;
 }
 
 [data-theme='dark'] {
   --background: #111111;
   --foreground: #fcfcfc;
   --grey: #8c8c8c;
-  --accent: #ff4c4c;
+  --accent: #8B0000;
 }
 
 body {

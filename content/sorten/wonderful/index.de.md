@@ -1,8 +1,8 @@
 ---
 id: "wonderful"
 name: "Wonderful"
-origin: "Spanien / Murcia"
-countryNames: ["Spain"]
+origin: "Spanien / Murcia & Argentinien"
+countryNames: ["Spain", "Argentina"]
 brix: [15.5, 18.5]
 hardness: 6.8
 ph: 3.2
