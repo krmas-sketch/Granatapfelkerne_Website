@@ -48,6 +48,6 @@ a {
 
 /* Custom Selection */
 ::selection {
-  background-color: var(--accent);
-  color: white;
+  background-color: var(--foreground);
+  color: var(--background);
 }

@@ -2,7 +2,7 @@ export default function JsonLd() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    name: 'Granatapfelkerne FrischFrucht',
+    name: 'FrischFrucht GmbH',
     image: '',
     url: 'https://granatapfelkerne.de',
     telephone: '+49 123 456789',

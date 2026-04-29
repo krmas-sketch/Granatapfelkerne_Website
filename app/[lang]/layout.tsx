@@ -10,8 +10,8 @@ import { ThemeProvider } from '../../components/ThemeProvider';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Granatapfelkerne | FrischFrucht',
-  description: 'Hochwertige Granatapfelkerne und FrischFrucht Produkte für B2B.',
+  title: 'Granatapfelkerne | FrischFrucht GmbH',
+  description: 'Hochwertige Granatapfelkerne und Produkte der FrischFrucht GmbH für B2B.',
 };
 
 export default function RootLayout({
