@@ -3,8 +3,9 @@
 import { motion } from 'framer-motion';
 import styles from '../app/[lang]/page.module.css';
 import VarietiesMap from './VarietiesMap';
+import ContactForm from './ContactForm';
 
-export default function HomeClient({ homeData, products, sorten, lang }: { homeData: any, products: any[], sorten: any[], lang: string }) {
+export default function HomeClient({ homeData, navData, products, sorten, lang }: { homeData: any, navData: any, products: any[], sorten: any[], lang: string }) {
   // Use data from markdown
   const heroText = homeData.heroTexts || [];
   const subTexts = homeData.heroSubtexts || [];
@@ -83,6 +84,8 @@ export default function HomeClient({ homeData, products, sorten, lang }: { homeD
           </div>
         </div>
       </section>
+
+      <ContactForm navData={navData} lang={lang} />
     </main>
   );
 }

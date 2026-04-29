@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './page.module.css';
+import styles from './ContactForm.module.css';
 
-export default function ContactClient({ navData, lang }: { navData: any, lang: string }) {
+export default function ContactForm({ navData, lang }: { navData: any, lang: string }) {
   const [status, setStatus] = useState<'idle' | 'submitted'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
