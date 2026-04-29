@@ -89,7 +89,7 @@ export default function VarietiesMap({ sorten, lang }: { sorten: any[], lang: st
 
             <div className={styles.tableRow}>
               <div className={styles.labelCol}><span className={styles.label}>Farbe CIE L*a*b*</span></div>
-              <div className={styles.valCol} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '12px' }}>
+              <div className={styles.valCol} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', gap: '12px' }}>
                 <div style={{ width: 16, height: 16, background: `rgb(${r},${g},${b2})`, border: '1px solid var(--grey)', flexShrink: 0 }} />
                 <div className={styles.valText} style={{ fontSize: '12px' }}>{selectedVariety.labL} / {selectedVariety.labA} / {selectedVariety.labB}</div>
               </div>
