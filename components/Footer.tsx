@@ -56,6 +56,8 @@ export default async function Footer({ lang }: { lang: string }) {
         <div className={styles.bottom}>
           <div className={styles.copyright}>Granatapfelkerne FrischFrucht ©2026</div>
           <div className={styles.metaLinks}>
+            <a href={`/${lang}/impressum`}>{lang === 'de' ? 'Impressum' : 'Imprint'}</a>
+            <a href={`/${lang}/datenschutz`}>{lang === 'de' ? 'Datenschutz' : 'Privacy Policy'}</a>
             <a href="#" target="_blank">LinkedIn</a>
             <a href="#" target="_blank">Instagram</a>
           </div>
