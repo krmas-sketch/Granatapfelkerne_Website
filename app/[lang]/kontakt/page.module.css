@@ -1,0 +1,147 @@
+.container {
+  padding: 12rem 4rem 10rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 500;
+  margin-bottom: 4rem;
+  letter-spacing: -0.02em;
+  font-family: var(--font-display), sans-serif;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 6rem;
+}
+
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.infoBlock h3 {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--grey);
+  margin-bottom: 1rem;
+}
+
+.infoBlock p, .infoBlock a {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--foreground);
+}
+
+.infoBlock a:hover {
+  color: var(--accent);
+}
+
+.formCol {
+  background: white;
+  padding: 4rem;
+  border: 1px solid rgba(140, 140, 140, 0.2);
+}
+
+[data-theme='dark'] .formCol {
+  background: #151515;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputGroup label {
+  font-family: var(--font-mono), monospace;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: var(--grey);
+  letter-spacing: 0.05em;
+}
+
+.input, .textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--grey);
+  padding: 0.8rem 0;
+  font-family: inherit;
+  font-size: 1.1rem;
+  color: var(--foreground);
+  transition: border-color 0.3s ease;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.input:focus, .textarea:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+}
+
+.submitBtn {
+  display: inline-block;
+  padding: 1rem 3rem;
+  background-color: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background-color: var(--foreground);
+  color: var(--background);
+}
+
+.successMsg {
+  padding: 2rem;
+  background-color: rgba(139, 0, 0, 0.05);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .formCol {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .container {
+    padding: 8rem 2rem 5rem 2rem;
+  }
+}

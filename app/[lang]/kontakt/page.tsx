@@ -1,12 +1,12 @@
-export default function KontaktPage({ params }: { params: { lang: string } }) {
+import { getMarkdownContent } from '@/lib/markdown';
+import ContactClient from './ContactClient';
+
+export default async function KontaktPage({ params }: { params: { lang: string } }) {
+  const navData = await getMarkdownContent(['global', 'navigation'], params.lang);
+
   return (
-    <main style={{ padding: '15rem 4rem', minHeight: '100vh' }}>
-      <h1>{params.lang === 'de' ? 'Kontakt' : 'Contact'}</h1>
-      <p style={{ marginTop: '2rem' }}>
-        {params.lang === 'de' 
-          ? 'Hier entsteht die Kontaktseite...' 
-          : 'The contact page goes here...'}
-      </p>
+    <main>
+      <ContactClient navData={navData} lang={params.lang} />
     </main>
   );
 }
